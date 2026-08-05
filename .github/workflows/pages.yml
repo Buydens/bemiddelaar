@@ -28,10 +28,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Pages configureren
+        # Vereist: Settings > Pages > Source staat op "GitHub Actions"
         uses: actions/configure-pages@v5
-        with:
-          # Zet Pages automatisch aan als dat nog niet gebeurd is
-          enablement: true
 
       - name: Bundel uploaden
         uses: actions/upload-pages-artifact@v3
