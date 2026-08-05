@@ -36,7 +36,8 @@
 .workspace.is-utility-open .overview-cluster {
   border-color: #78a087;
   background: linear-gradient(90deg, var(--utility-bg) 0 34%, #fff 56% 100%);
-  box-shadow: 0 0 0 2px rgba(52, 119, 76, .13), 0 8px 24px rgba(39, 82, 54, .05);
+  /* Eén rand: de 1px lijn draagt de afbakening, zonder ring eromheen. */
+  box-shadow: 0 8px 24px rgba(39, 82, 54, .05);
 }
 
 .workspace.is-utility-open .overview-cluster::before {
