@@ -1,0 +1,350 @@
+@import url("profiles-rail-action.css");
+
+/* Eén rustige toegang tot alle experimentele werkruimte-instellingen. */
+.prototype-settings {
+  position: relative;
+  justify-self: end;
+}
+
+.prototype-settings-button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: var(--surface);
+  color: #626b76;
+  cursor: pointer;
+}
+
+.prototype-settings-button:hover,
+.prototype-settings-button[aria-expanded="true"] {
+  border-color: #cbd0d7;
+  background: #f7f8fa;
+  color: #30363d;
+}
+
+.prototype-settings-button[aria-expanded="true"] {
+  box-shadow: 0 0 0 2px rgba(18, 101, 219, .08);
+}
+
+.prototype-settings-button svg {
+  width: 17px;
+  height: 17px;
+}
+
+.prototype-settings-panel {
+  position: absolute;
+  z-index: 80;
+  top: 39px;
+  right: 0;
+  width: min(310px, calc(100vw - 24px));
+  overflow: hidden;
+  border: 1px solid #d9dde3;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .98);
+  box-shadow: 0 18px 48px rgba(35, 43, 54, .17), 0 2px 8px rgba(35, 43, 54, .06);
+  backdrop-filter: blur(18px);
+  transform-origin: top right;
+  animation: prototype-settings-in 140ms ease-out;
+}
+
+.prototype-settings-panel[hidden] {
+  display: none;
+}
+
+@keyframes prototype-settings-in {
+  from { opacity: 0; transform: translateY(-4px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.prototype-settings-heading {
+  padding: 14px 15px 11px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.prototype-settings-heading strong,
+.prototype-settings-heading span {
+  display: block;
+}
+
+.prototype-settings-heading strong {
+  color: #30363d;
+  font-size: 12px;
+  font-weight: 680;
+}
+
+.prototype-settings-heading span {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.prototype-settings-group {
+  padding: 8px 7px;
+}
+
+.prototype-settings-group + .prototype-settings-group {
+  border-top: 1px solid var(--line-soft);
+}
+
+.prototype-settings-group > span {
+  display: block;
+  padding: 4px 8px 5px;
+  color: #929aa4;
+  font-size: 8px;
+  font-weight: 720;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.prototype-setting {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 32px;
+  align-items: center;
+  gap: 12px;
+  min-height: 47px;
+  padding: 7px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.prototype-setting:hover {
+  background: #f6f7f9;
+}
+
+.prototype-setting-copy strong,
+.prototype-setting-copy small {
+  display: block;
+}
+
+.prototype-setting-copy strong {
+  color: #404750;
+  font-size: 10px;
+  font-weight: 640;
+}
+
+.prototype-setting-copy small {
+  margin-top: 3px;
+  color: #7d8691;
+  font-size: 8.5px;
+  line-height: 1.35;
+}
+
+.setting-switch {
+  position: relative;
+  display: block;
+  width: 30px;
+  height: 18px;
+}
+
+.setting-switch input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.switch-track {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  background: #cfd4da;
+  transition: background-color 140ms ease;
+}
+
+.switch-track::after {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 1px 3px rgba(26, 33, 42, .28);
+  content: "";
+  transition: transform 140ms ease;
+}
+
+.setting-switch input:checked + .switch-track {
+  background: var(--blue);
+}
+
+.setting-switch input:checked + .switch-track::after {
+  transform: translateX(12px);
+}
+
+.setting-switch input:focus-visible + .switch-track {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.prototype-settings-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 15px;
+  border-top: 1px solid var(--line-soft);
+  background: #fafbfc;
+}
+
+.prototype-settings-footer span {
+  color: #8a929c;
+  font-size: 8px;
+}
+
+.prototype-settings-footer > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prototype-settings-footer a {
+  color: #68727e;
+  font-size: 8px;
+  text-decoration: none;
+}
+
+.prototype-settings-footer a:hover {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.prototype-settings-footer button {
+  padding: 5px 0;
+  background: transparent;
+  color: #52606e;
+  font-size: 9px;
+  font-weight: 620;
+  cursor: pointer;
+}
+
+.prototype-settings-footer button:hover {
+  color: var(--blue);
+}
+
+/* 42px → 34px: alle railvarianten volgen hetzelfde maat-token. */
+body[data-rail-width="34"] .dependent-panel.is-collapsed {
+  flex: 0 0 34px !important;
+  width: 34px;
+  min-width: 34px;
+  max-width: 34px;
+}
+
+body[data-rail-width="34"] .dependent-panel.is-collapsed .panel-title-group {
+  gap: 10px;
+}
+
+body[data-rail-width="34"] .dependent-panel.is-collapsed .rail-icon {
+  width: 20px;
+  height: 20px;
+}
+
+body[data-rail-width="34"] .dependent-panel.is-collapsed .rail-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+body[data-rail-width="34"][data-edit-presentation="subpanel"] .detail-cluster:has(> #detailPanel.is-collapsed):has(> #crudPanel.is-collapsed) {
+  flex-basis: 34px !important;
+  width: 34px;
+  min-width: 34px;
+  max-width: 34px;
+}
+
+body[data-rail-width="34"] .detail-cluster:has(> #detailPanel:not(.is-collapsed)):has(> #crudPanel.is-collapsed) {
+  min-width: 382px;
+}
+
+body[data-rail-width="34"][data-main-rails="both"] .overview-cluster.is-main-collapsed {
+  flex: 0 0 34px !important;
+  width: 34px;
+  min-width: 34px;
+  max-width: 34px;
+}
+
+body[data-rail-width="34"][data-main-rails="both"] .overview-cluster.is-main-collapsed > #overviewPanel {
+  flex-basis: 32px !important;
+  width: 32px;
+  min-width: 32px;
+}
+
+body[data-rail-width="34"][data-edge-rails="true"] .workspace:not(.has-maximized) > .detail-cluster:has(> #detailPanel.is-collapsed):has(> #crudPanel.is-collapsed),
+body[data-rail-width="34"][data-edge-rails="true"] .workspace:not(.has-maximized) > .detail-cluster:has(> #detailPanel.is-collapsed) > #detailPanel.is-collapsed {
+  flex: 0 0 34px !important;
+  width: 34px;
+  min-width: 34px !important;
+  max-width: 34px;
+}
+
+body[data-rail-width="34"][data-rail-action="managed"] .workspace:not(.has-maximized) > .panel-cluster[data-rail-side].is-managed-rail {
+  flex-basis: 34px !important;
+  width: 34px;
+  min-width: 34px !important;
+  max-width: 34px;
+}
+
+body[data-rail-width="34"][data-rail-action="managed"] .panel-cluster.is-managed-rail > .panel[data-panel-role="owner"] {
+  width: 32px;
+  min-width: 32px;
+}
+
+/* Fullscreen wordt focus-met-context: andere eigenaars blijven buitenrails. */
+body[data-fullscreen-others="rails"] #workspace.workspace.has-maximized > .panel-cluster.has-maximized-child {
+  flex: 1 1 0 !important;
+  width: auto;
+  min-width: 0;
+  max-width: none;
+}
+
+body[data-fullscreen-others="rails"][data-rail-width="34"] #workspace.workspace.has-maximized > .overview-cluster.is-main-collapsed:not(.has-maximized-child) {
+  display: flex !important;
+  flex: 0 0 34px !important;
+  width: 34px;
+  min-width: 34px;
+  max-width: 34px;
+}
+
+body[data-fullscreen-others="rails"][data-rail-width="34"] #workspace.workspace.has-maximized > .detail-cluster:not(.has-maximized-child):has(> #detailPanel.is-collapsed) {
+  display: flex !important;
+  flex: 0 0 34px !important;
+  width: 34px;
+  min-width: 34px !important;
+  max-width: 34px;
+  overflow: hidden;
+  border-color: var(--line);
+  background: #f3f4f6;
+}
+
+body[data-fullscreen-others="rails"][data-rail-width="34"] #workspace.workspace.has-maximized > .detail-cluster:not(.has-maximized-child) > #detailPanel.is-collapsed {
+  display: grid !important;
+  flex: 0 0 34px !important;
+  width: 34px;
+  min-width: 34px;
+  max-width: 34px;
+}
+
+body[data-fullscreen-others="rails"] #workspace.workspace.has-maximized > .detail-cluster:not(.has-maximized-child) > #editDivider,
+body[data-fullscreen-others="rails"] #workspace.workspace.has-maximized > .detail-cluster:not(.has-maximized-child) > #crudPanel {
+  display: none !important;
+}
+
+body[data-rail-transition="instant"] .overview-cluster,
+body[data-rail-transition="instant"] .detail-cluster,
+body[data-rail-transition="instant"] .panel,
+body[data-rail-transition="instant"] .panel-resizer::after {
+  transition: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prototype-settings-panel,
+  .switch-track,
+  .switch-track::after {
+    animation: none;
+    transition: none;
+  }
+}

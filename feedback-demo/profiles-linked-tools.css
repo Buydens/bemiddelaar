@@ -1,0 +1,222 @@
+@import url("profiles-resizable.css");
+
+:root {
+  --edit-utility-bg: #eef5fc;
+  --edit-utility-header: #e3edf8;
+  --edit-utility-line: #afc7df;
+  --edit-utility-ink: #315f8b;
+}
+
+/* Twee hoofdgebieden; taakpanelen leven binnen het gebied waarop ze inwerken. */
+@media (min-width: 761px) {
+  .overview-cluster {
+    flex: var(--cluster-size, 1.05) 1 0;
+  }
+
+  .detail-cluster {
+    flex: var(--cluster-size, 1.55) 1 0;
+  }
+}
+
+.detail-cluster {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  overflow: visible;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  transition: flex 240ms ease, min-width 240ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.detail-cluster > #detailPanel:not(.is-collapsed) {
+  flex: 1 1 auto;
+  min-width: 340px;
+}
+
+.detail-cluster > #crudPanel:not(.is-collapsed) {
+  --edit-width: 350px;
+  flex: 0 0 var(--edit-width);
+  min-width: 290px;
+  max-width: 520px;
+}
+
+.detail-cluster:has(#detailPanel.is-collapsed):has(#crudPanel.is-collapsed) {
+  flex: 0 0 108px !important;
+  min-width: 108px;
+}
+
+.detail-cluster:has(#detailPanel:not(.is-collapsed)):has(#crudPanel.is-collapsed) {
+  min-width: 398px;
+}
+
+.detail-cluster:has(#crudPanel:not(.is-collapsed)) {
+  min-width: 688px;
+  overflow: hidden;
+  border-color: var(--edit-utility-line);
+  background: linear-gradient(90deg, #fff 0 48%, var(--edit-utility-bg) 72% 100%);
+  box-shadow: 0 0 0 2px rgba(53, 105, 153, .1), 0 8px 24px rgba(45, 85, 123, .045);
+}
+
+.detail-cluster:has(#crudPanel:not(.is-collapsed))::before {
+  position: absolute;
+  z-index: 10;
+  top: -1px;
+  right: -1px;
+  left: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, #91aac0 0 42%, #6f99bf 68%, #3f739f 100%);
+  content: "";
+  pointer-events: none;
+}
+
+.detail-cluster:has(#crudPanel:not(.is-collapsed)) > .panel {
+  border: 0;
+  border-radius: 0;
+}
+
+.detail-cluster:has(#crudPanel:not(.is-collapsed)) > .panel::after {
+  display: none;
+}
+
+/* Bewerken is een blauw taakpaneel, geen derde hoofddeel. */
+#crudPanel:not(.is-collapsed) {
+  background: var(--edit-utility-bg);
+}
+
+#crudPanel:not(.is-collapsed) .panel-header {
+  border-bottom-color: var(--edit-utility-line);
+  background: var(--edit-utility-header);
+}
+
+#crudPanel:not(.is-collapsed) .dependent-body {
+  padding-inline: 17px;
+  background: var(--edit-utility-bg);
+}
+
+#crudPanel:not(.is-collapsed) .action-intro {
+  margin: -1px -1px 17px;
+  padding-bottom: 15px;
+  border-bottom-color: var(--edit-utility-line);
+}
+
+.edit-panel-kind,
+.edit-link-label,
+.edit-link-label b {
+  color: var(--edit-utility-ink);
+}
+
+.edit-link-label {
+  opacity: .72;
+}
+
+#crudPanel.is-collapsed .edit-panel-kind,
+#crudPanel.is-collapsed .edit-link-label {
+  display: none;
+}
+
+/* De blauwe binnengrens schaalt het formulier zoals de groene filtergrens. */
+.detail-cluster > .edit-divider {
+  flex: 0 0 8px;
+  min-width: 8px;
+  background: linear-gradient(90deg, #fff 0 44%, var(--edit-utility-bg) 56% 100%);
+}
+
+.detail-cluster > .edit-divider::after {
+  left: 3px;
+  background: #718fab;
+}
+
+.detail-cluster > .edit-divider.is-open-handle::after {
+  background: #5f83a6;
+  opacity: .55;
+}
+
+.detail-cluster > .edit-divider.is-disabled {
+  cursor: default;
+}
+
+.detail-cluster > .edit-divider.is-disabled::after {
+  opacity: .12;
+}
+
+.workspace.is-edit-resizing,
+.workspace.is-edit-resizing * {
+  cursor: col-resize !important;
+  user-select: none !important;
+}
+
+.workspace.is-edit-resizing #crudPanel,
+.workspace.is-main-resizing .overview-cluster,
+.workspace.is-main-resizing .detail-cluster {
+  transition: none;
+}
+
+/* Fullscreen ondersteunt nu beide gekoppelde clusters. */
+.workspace.has-maximized > .detail-cluster.has-maximized-child {
+  display: flex !important;
+  flex: 1 1 100% !important;
+  min-width: 0;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.workspace.has-maximized > .detail-cluster.has-maximized-child::before {
+  display: none;
+}
+
+.workspace.has-maximized > .detail-cluster.has-maximized-child > * {
+  display: none !important;
+}
+
+.workspace.has-maximized > .detail-cluster.has-maximized-child > .panel.is-maximized {
+  display: grid !important;
+  flex: 1 1 100% !important;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+}
+
+.workspace.has-maximized > .detail-cluster.has-maximized-child > #crudPanel.is-maximized {
+  border-color: var(--edit-utility-line);
+}
+
+@media (max-width: 1180px) {
+  .detail-cluster > #crudPanel:not(.is-collapsed) {
+    --edit-width: 320px;
+  }
+
+  .detail-cluster:has(#crudPanel:not(.is-collapsed)) {
+    min-width: 638px;
+  }
+}
+
+@media (max-width: 760px) {
+  .detail-cluster {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+
+  .detail-cluster > #detailPanel:not(.is-collapsed) {
+    flex: 0 0 calc(100vw - 52px);
+    min-width: calc(100vw - 52px);
+  }
+
+  .detail-cluster > #crudPanel:not(.is-collapsed) {
+    --edit-width: calc(100vw - 52px);
+    min-width: calc(100vw - 52px);
+    max-width: none;
+  }
+
+  .detail-cluster:has(#crudPanel:not(.is-collapsed)) {
+    min-width: 0;
+  }
+
+  .edit-link-label {
+    display: none;
+  }
+}

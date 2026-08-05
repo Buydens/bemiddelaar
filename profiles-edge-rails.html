@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <meta name="description" content="Profielworkflow waarin gesloten hoofdpanelen exact één rail innemen en altijd tegen de buitenrand van de werkruimte staan." />
+    <title>Werkruimte — rails aan de rand</title>
+    <link rel="stylesheet" href="profiles-edge-rails.css" />
+  </head>
+  <body data-initial-profile="p1" data-fullscreen-scope="cluster" data-rail-width="42" data-overview-presentation="table" data-edit-presentation="subpanel" data-edit-toggle="true" data-main-rails="both" data-editor-mode="on-demand" data-selection-behavior="row-opens-detail" data-resize-feel="classic" data-selection-hitarea="cell" data-edge-rails="true">
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="index.html" aria-label="Werkruimte basisversie"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>Werkruimte</span></a>
+        <div class="project-context"><span>Bemiddelaar</span><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m5 6 3 3 3-3" /></svg><small>Rails aan de rand</small></div>
+        <nav class="version-links" aria-label="Demoversies"><a href="profiles-classic-resize.html">Direct schalen</a><a href="profiles-safe-bulk-selection.html">Veilige bulkselectie</a><span class="version-current">Rails aan de rand</span></nav>
+      </header>
+
+      <main class="workspace" id="workspace" aria-label="Profielwerkruimte">
+        <div class="overview-cluster panel-cluster" id="overviewCluster">
+          <aside class="panel utility-panel" id="filterPanel" aria-label="Filters voor Overzicht" hidden>
+            <header class="panel-header utility-header"><div class="panel-title-group"><span class="panel-kind">FILTER</span><h2>Filters</h2><span class="panel-link-label">voor Overzicht <b aria-hidden="true">→</b></span></div><button class="panel-action" id="closeFilterButton" type="button" aria-label="Filterpaneel sluiten" title="Filterpaneel sluiten"><svg aria-hidden="true" viewBox="0 0 18 18"><path d="m5.5 5.5 7 7M12.5 5.5l-7 7" /></svg></button></header>
+            <div class="utility-body">
+              <div class="utility-intro"><strong>Verfijn de resultaten</strong><span>Iedere keuze wordt direct in Overzicht toegepast.</span></div>
+              <fieldset class="utility-group"><legend>Dossierstatus</legend><div class="utility-options utility-options-inline"><label><input type="checkbox" name="statusFilter" value="Actief" /><span>Actief</span></label><label><input type="checkbox" name="statusFilter" value="Opvolging" /><span>Opvolging</span></label><label><input type="checkbox" name="statusFilter" value="Nieuw" /><span>Nieuw</span></label></div></fieldset>
+              <fieldset class="utility-group"><legend>Dossierfase</legend><div class="utility-options"><label><input type="checkbox" name="stageFilter" value="Intake" /><span>Intake</span><small>2</small></label><label><input type="checkbox" name="stageFilter" value="Oriëntatie" /><span>Oriëntatie</span><small>2</small></label><label><input type="checkbox" name="stageFilter" value="Opleiding" /><span>Opleiding</span><small>2</small></label><label><input type="checkbox" name="stageFilter" value="Matching" /><span>Matching</span><small>2</small></label></div></fieldset>
+              <fieldset class="utility-group"><legend>Regio</legend><div class="utility-options"><label><input type="checkbox" name="regionFilter" value="Antwerpen" /><span>Antwerpen</span><small>3</small></label><label><input type="checkbox" name="regionFilter" value="Oost-Vlaanderen" /><span>Oost-Vlaanderen</span><small>1</small></label><label><input type="checkbox" name="regionFilter" value="Vlaams-Brabant en Brussel" /><span>Vlaams-Brabant &amp; Brussel</span><small>2</small></label><label><input type="checkbox" name="regionFilter" value="Limburg" /><span>Limburg</span><small>1</small></label><label><input type="checkbox" name="regionFilter" value="West-Vlaanderen" /><span>West-Vlaanderen</span><small>1</small></label></div></fieldset>
+              <fieldset class="utility-group"><legend>Bemiddelaar</legend><div class="utility-options"><label><input type="checkbox" name="adviserFilter" value="Liesbeth Janssens" /><span>Liesbeth Janssens</span><small>3</small></label><label><input type="checkbox" name="adviserFilter" value="Tom Peeters" /><span>Tom Peeters</span><small>3</small></label><label><input type="checkbox" name="adviserFilter" value="Sarah Wouters" /><span>Sarah Wouters</span><small>2</small></label></div></fieldset>
+              <fieldset class="utility-group"><legend>Laatst gewijzigd</legend><div class="utility-options utility-options-inline"><label><input type="radio" name="timeFilter" value="all" checked /><span>Alles</span></label><label><input type="radio" name="timeFilter" value="0" /><span>Vandaag</span></label><label><input type="radio" name="timeFilter" value="7" /><span>7 dagen</span></label><label><input type="radio" name="timeFilter" value="30" /><span>30 dagen</span></label></div></fieldset>
+              <fieldset class="utility-group"><legend>Labels</legend><div class="utility-tags"><label><input type="checkbox" name="tagFilter" value="Prioritair" /><span>Prioritair</span></label><label><input type="checkbox" name="tagFilter" value="Taalondersteuning" /><span>Taalondersteuning</span></label><label><input type="checkbox" name="tagFilter" value="Opleiding" /><span>Opleiding</span></label><label><input type="checkbox" name="tagFilter" value="Nieuwe inschrijving" /><span>Nieuwe inschrijving</span></label></div></fieldset>
+            </div>
+            <footer class="utility-footer"><button id="clearFiltersButton" type="button">Wis filters</button><span><b id="filterResultPreview">8 profielen</b> in Overzicht <i aria-hidden="true">→</i></span></footer>
+          </aside>
+
+          <div class="utility-divider" id="utilityDivider" role="separator" tabindex="0" aria-orientation="vertical" aria-label="Breedte van filterpaneel aanpassen" aria-valuemin="270" aria-valuemax="500" aria-valuenow="330" hidden></div>
+
+          <section class="panel overview-panel is-active" id="overviewPanel" data-panel="overview">
+            <header class="panel-header"><div class="panel-title-group"><span class="overview-rail-icon" aria-hidden="true"><svg viewBox="0 0 18 18"><path d="M4 4.5h10M4 9h10M4 13.5h10" /></svg></span><span class="panel-number">01</span><h1>Overzicht</h1><span class="result-badge" id="headerResultCount">8</span><span class="linked-state" id="linkedState" hidden><i></i><b id="linkedStateLabel">filterpaneel links</b></span></div><div class="panel-actions"><button class="panel-action maximize-action" type="button" aria-label="Paneel maximaliseren" title="Maximaliseren"><svg class="maximize-icon" aria-hidden="true" viewBox="0 0 18 18"><path d="M5 2.75H2.75V5M13 2.75h2.25V5M5 15.25H2.75V13M13 15.25h2.25V13" /></svg><svg class="restore-icon" aria-hidden="true" viewBox="0 0 18 18"><path d="M2.75 6H6V2.75M15.25 6H12V2.75M2.75 12H6v3.25M15.25 12H12v3.25" /></svg></button><button class="panel-action focus-overview-action" id="focusOverviewButton" hidden type="button" aria-label="Focus op overzicht" title="Focus op overzicht"><svg class="focus-enter-icon" aria-hidden="true" viewBox="0 0 18 18"><path d="M5 2.75H2.75V5M13 2.75h2.25V5M5 15.25H2.75V13M13 15.25h2.25V13" /></svg><svg class="focus-exit-icon" aria-hidden="true" viewBox="0 0 18 18"><path d="M2.75 6H6V2.75M15.25 6H12V2.75M2.75 12H6v3.25M15.25 12H12v3.25" /></svg></button></div></header>
+            <div class="overview-body">
+              <div class="overview-tools">
+                <div class="tool-row"><button class="tool-button" id="filterButton" type="button" aria-controls="filterPanel" aria-expanded="false"><svg aria-hidden="true" viewBox="0 0 18 18"><path d="M3 4.5h12M5 9h8M7 13.5h4" /></svg><span>Filters</span><i id="filterCount" hidden>0</i></button><label class="search-field" for="profileSearch"><svg aria-hidden="true" viewBox="0 0 18 18"><circle cx="8" cy="8" r="4.75" /><path d="m11.5 11.5 3 3" /></svg><input id="profileSearch" type="search" placeholder="Zoek in profielen" autocomplete="off" /></label><label class="sort-field"><span class="sr-only">Sortering</span><svg aria-hidden="true" viewBox="0 0 18 18"><path d="M6 3v12m0 0-2.5-2.5M6 15l2.5-2.5M12 15V3m0 0L9.5 5.5M12 3l2.5 2.5" /></svg><select id="profileSort"><option value="recent">Recent gewijzigd</option><option value="name">Naam A–Z</option><option value="status">Dossierstatus</option><option value="city">Woonplaats</option></select></label></div>
+                <button class="filter-summary" id="filterSummary" type="button" hidden><svg aria-hidden="true" viewBox="0 0 18 18"><path d="m11 5-4 4 4 4" /></svg><span><i id="filterSummaryCount">0</i> filters actief</span><small id="filterSummaryText"></small></button>
+                <div class="selection-row" id="selectionRow" hidden><div><span id="selectionLabel">1 profiel geselecteerd</span><small id="hiddenSelectionLabel"></small></div><button id="clearSelectionButton" type="button">Selectie wissen</button></div>
+                <div class="results-meta"><span id="resultsLabel">8 profielen</span><span>Groen filtert · blauw bewerkt</span></div>
+              </div>
+              <div class="profile-list" id="profileList" aria-label="Profielresultaten"></div>
+              <div class="empty-results" id="emptyResults" hidden><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m15.5 15.5 4 4" /></svg><strong>Geen profielen gevonden</strong><span>Pas je zoekterm of filters aan.</span><button id="resetSearchButton" type="button">Zoeken en filters herstellen</button></div>
+            </div>
+          </section>
+        </div>
+
+        <div class="panel-divider panel-resizer main-resizer" id="mainDivider" role="separator" tabindex="-1" aria-orientation="vertical" aria-label="Breedte van Overzicht en Detail aanpassen" aria-disabled="true"></div>
+        <div class="detail-cluster panel-cluster" id="detailCluster">
+        <section class="panel dependent-panel is-collapsed is-disabled" id="detailPanel" data-panel="detail" aria-disabled="true">
+          <header class="panel-header dependent-header" tabindex="-1"><div class="panel-title-group"><span class="rail-icon" aria-hidden="true"><svg viewBox="0 0 18 18"><path d="M5 2.75h5l3 3v9.5H5z" /><path d="M10 2.75v3h3" /></svg></span><span class="panel-number">02</span><h2>Detail</h2></div><div class="panel-actions"><button class="panel-action maximize-action" type="button" aria-label="Paneel maximaliseren" title="Maximaliseren"><svg class="maximize-icon" aria-hidden="true" viewBox="0 0 18 18"><path d="M5 2.75H2.75V5M13 2.75h2.25V5M5 15.25H2.75V13M13 15.25h2.25V13" /></svg><svg class="restore-icon" aria-hidden="true" viewBox="0 0 18 18"><path d="M2.75 6H6V2.75M15.25 6H12V2.75M2.75 12H6v3.25M15.25 12H12v3.25" /></svg></button><button class="panel-action collapse-dependent" type="button" aria-label="Detail sluiten naar rail" title="Sluiten naar rail"><svg aria-hidden="true" viewBox="0 0 18 18"><path d="m5.5 5.5 7 7M12.5 5.5l-7 7" /></svg></button></div></header>
+          <div class="dependent-body" id="detailContent"></div>
+        </section>
+
+        <div class="utility-divider edit-divider" id="editDivider" role="separator" tabindex="-1" aria-orientation="vertical" aria-label="Breedte van bewerkingspaneel aanpassen" aria-disabled="true"></div>
+        <section class="panel dependent-panel edit-utility-panel is-collapsed is-disabled" id="crudPanel" data-panel="bewerken" aria-disabled="true">
+          <header class="panel-header dependent-header" tabindex="-1"><div class="panel-title-group"><span class="rail-icon edit-rail-icon" aria-hidden="true"><svg viewBox="0 0 18 18"><path d="m4 12.75-.75 2.5 2.5-.75 7.8-7.8-1.75-1.75zM10.8 5.95l1.75 1.75" /></svg></span><span class="panel-kind edit-panel-kind">FORMULIER</span><h2>Bewerken</h2><span class="panel-link-label edit-link-label"><b aria-hidden="true">←</b> voor Detail</span></div><div class="panel-actions"><button class="panel-action collapse-dependent" type="button" aria-label="Bewerken sluiten naar rail" title="Sluiten naar rail"><svg aria-hidden="true" viewBox="0 0 18 18"><path d="m5.5 5.5 7 7M12.5 5.5l-7 7" /></svg></button></div></header>
+          <div class="dependent-body" id="crudContent"></div>
+        </section>
+        </div>
+      </main>
+
+      <footer class="statusbar"><div><i class="status-dot"></i><span id="modeLabel">Browsemodus · geen selectie</span></div><div class="status-center"><kbd>/</kbd><span>Zoeken</span><kbd>Esc</kbd><span>Sluiten of overzicht</span></div><span id="visiblePanelLabel">Overzicht + 2 contextuele rails</span></footer>
+    </div>
+    <script src="profiles-linked-filters.js"></script>
+    <script src="profiles-linked-tools.js"></script>
+    <script src="profiles-content-actions.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

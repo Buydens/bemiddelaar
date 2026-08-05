@@ -1,0 +1,40 @@
+@import url("profiles-selection-hitarea.css");
+
+/*
+ * Een contextueel subpaneel reserveert nooit een eigen rail. Wanneer Detail
+ * sluit, wordt de volledige rechtergroep daarom exact één rail breed.
+ */
+@media (min-width: 761px) {
+  body[data-edge-rails="true"] .workspace:not(.has-maximized) > .detail-cluster:has(> #detailPanel.is-collapsed):has(> #crudPanel.is-collapsed) {
+    flex: 0 0 42px !important;
+    width: 42px;
+    min-width: 42px !important;
+    max-width: 42px;
+  }
+
+  body[data-edge-rails="true"] .workspace:not(.has-maximized) > .detail-cluster:has(> #detailPanel.is-collapsed) > #detailPanel.is-collapsed {
+    flex: 0 0 42px !important;
+    width: 42px;
+    min-width: 42px;
+    max-width: 42px;
+  }
+
+  body[data-edge-rails="true"] .workspace:not(.has-maximized) > .detail-cluster:has(> #detailPanel.is-collapsed) > #editDivider,
+  body[data-edge-rails="true"] .workspace:not(.has-maximized) > .detail-cluster:has(> #detailPanel.is-collapsed) > #crudPanel.is-collapsed {
+    display: none !important;
+  }
+
+  /* Het open hoofdgebied neemt onmiddellijk alle vrijgekomen railruimte in. */
+  body[data-edge-rails="true"] .workspace:not(.has-maximized):has(> .detail-cluster > #detailPanel.is-collapsed) > .overview-cluster:not(.is-main-collapsed) {
+    flex: 1 1 0 !important;
+    width: auto;
+    max-width: none;
+  }
+
+  body[data-edge-rails="true"] .workspace:not(.has-maximized):has(> .overview-cluster.is-main-collapsed) > .detail-cluster:has(> #detailPanel:not(.is-collapsed)) {
+    flex: 1 1 0 !important;
+    width: auto;
+    max-width: none;
+  }
+}
+

@@ -1,0 +1,9 @@
+# Bouwartefacten / exports
+*.zip
+output/
+
+# macOS
+.DS_Store
+
+# Lokale toolinstellingen
+.claude/settings.local.json

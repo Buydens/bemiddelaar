@@ -1,0 +1,156 @@
+@import url("profiles-edit-from-detail.css");
+
+:root {
+  --utility-bg: #edf6f0;
+  --utility-header: #e2efe6;
+  --utility-line: #c5daca;
+  --utility-ink: #345c43;
+  --filter-green: #34774c;
+  --filter-green-dark: #285f3c;
+  --filter-green-soft: #e6f2ea;
+  --edit-blue-soft: #eef5fc;
+  --edit-blue-header: #e3edf8;
+  --edit-blue-line: #bfd1e4;
+}
+
+/* Filterfamilie — groen */
+#filterButton {
+  border-color: #b9d0c0;
+  background: #f8fbf9;
+  color: var(--filter-green);
+}
+
+#filterButton:hover,
+#filterButton.is-active,
+#filterButton[aria-expanded="true"] {
+  border-color: #7fa88d;
+  background: var(--filter-green-soft);
+  box-shadow: 0 0 0 2px rgba(52, 119, 76, .08);
+  color: var(--filter-green-dark);
+}
+
+#filterButton i {
+  background: var(--filter-green);
+}
+
+.workspace.is-utility-open .overview-cluster {
+  border-color: #78a087;
+  background: linear-gradient(90deg, var(--utility-bg) 0 34%, #fff 56% 100%);
+  box-shadow: 0 0 0 2px rgba(52, 119, 76, .13), 0 8px 24px rgba(39, 82, 54, .05);
+}
+
+.workspace.is-utility-open .overview-cluster::before {
+  background: linear-gradient(90deg, #34774c, #6ca17d 40%, #a7c8b1 72%, #6d9a7c);
+}
+
+.overview-cluster > .utility-divider {
+  background: linear-gradient(90deg, var(--utility-bg) 0 44%, #fff 56% 100%);
+}
+
+.workspace.is-utility-open .overview-cluster > .utility-divider::after {
+  background: #638d71;
+}
+
+.utility-header .panel-title-group h2,
+.panel-kind,
+.panel-link-label,
+.panel-link-label b,
+.utility-intro strong,
+.utility-group legend {
+  color: var(--filter-green-dark);
+}
+
+.utility-options input {
+  accent-color: var(--filter-green);
+}
+
+.utility-options-inline input:checked + span,
+.utility-tags input:checked + span {
+  border-color: #78a388;
+  background: #dbece0;
+  color: var(--filter-green-dark);
+}
+
+.utility-footer button {
+  color: var(--filter-green-dark);
+}
+
+.utility-footer span b,
+.utility-footer span i {
+  color: var(--filter-green-dark);
+}
+
+.filter-summary {
+  background: #eaf4ed;
+  color: var(--filter-green-dark);
+}
+
+.filter-summary:hover {
+  background: #dfede4;
+}
+
+.filter-summary svg,
+.linked-state {
+  color: var(--filter-green);
+}
+
+.linked-state i {
+  background: var(--filter-green);
+}
+
+/* Bewerkenfamilie — zacht blauw */
+.edit-detail-action {
+  border-color: #b9cde1;
+  background: #f4f8fc;
+  color: #2f6597;
+}
+
+.edit-detail-action:hover,
+.edit-detail-action.is-active {
+  border-color: #8fb1d2;
+  background: #e4eef9;
+  color: #245783;
+}
+
+#crudPanel:not(.is-collapsed) {
+  border-color: var(--edit-blue-line);
+  background: var(--edit-blue-soft);
+}
+
+#crudPanel:not(.is-collapsed) .panel-header {
+  border-bottom-color: var(--edit-blue-line);
+  background: var(--edit-blue-header);
+}
+
+#crudPanel:not(.is-collapsed) .dependent-body {
+  background: var(--edit-blue-soft);
+}
+
+#crudPanel.is-collapsed:not(.is-disabled) {
+  background: #edf4fb;
+}
+
+#crudPanel.is-collapsed:not(.is-disabled) h2,
+#crudPanel .edit-rail-icon {
+  color: #436f99;
+}
+
+#crudPanel .form-control {
+  border-color: #c5d5e5;
+  background: #fff;
+}
+
+#crudPanel .form-control:focus {
+  border-color: #6f9bc4;
+  box-shadow: 0 0 0 2px rgba(72, 126, 177, .09);
+  outline: 0;
+}
+
+.workspace.is-editor-open #detailPanel,
+.workspace.is-editor-open #crudPanel {
+  border-color: #8eadc9;
+}
+
+.workspace.is-editor-open #crudPanel::before {
+  background: #4d83b5;
+}

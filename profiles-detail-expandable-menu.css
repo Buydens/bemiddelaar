@@ -1,0 +1,136 @@
+@import url("profiles-panel-state-polish.css");
+
+:root {
+  --detail-menu-icons-width: 52px;
+  --detail-menu-labels-width: 188px;
+  --detail-menu-motion: 220ms cubic-bezier(.2, .75, .25, 1);
+}
+
+/* Het interne menu verandert van presentatie; Detail blijft de eigenaar. */
+#detailPanel .detail-composite-body {
+  grid-template-columns: var(--detail-menu-icons-width) minmax(0, 1fr);
+  transition: grid-template-columns var(--detail-menu-motion);
+}
+
+body[data-detail-menu-mode="labels"] #detailPanel .detail-composite-body {
+  grid-template-columns: var(--detail-menu-labels-width) minmax(0, 1fr);
+}
+
+#detailPanel .detail-composite-body:has(> .detail-icon-menu[hidden]) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.detail-icon-menu {
+  align-items: stretch;
+  padding: 8px 6px 14px;
+  transition: padding var(--detail-menu-motion);
+}
+
+.detail-icon-menu button {
+  grid-template-columns: 40px minmax(0, 0fr);
+  column-gap: 0;
+  align-items: center;
+  justify-items: start;
+  justify-content: start;
+  width: 40px;
+  max-width: 100%;
+  margin-inline: auto;
+  overflow: hidden;
+  transition:
+    width var(--detail-menu-motion),
+    padding var(--detail-menu-motion),
+    background-color 140ms ease,
+    color 140ms ease;
+}
+
+body[data-detail-menu-mode="labels"] .detail-icon-menu button {
+  grid-template-columns: 28px minmax(0, 1fr);
+  column-gap: 8px;
+  width: 100%;
+  padding: 0 10px;
+  margin-inline: 0;
+}
+
+.detail-icon-menu button svg {
+  grid-column: 1;
+  align-self: center;
+  justify-self: center;
+  flex: none;
+}
+
+.detail-menu-label {
+  grid-column: 2;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  justify-self: stretch;
+  overflow: hidden;
+  color: currentColor;
+  font-weight: 550;
+  line-height: 1.15;
+  opacity: 0;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transform: translateX(-5px);
+  transition: opacity 120ms ease, transform var(--detail-menu-motion);
+}
+
+body[data-detail-menu-mode="labels"] .detail-menu-label {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: 70ms;
+}
+
+.detail-menu-toggle {
+  flex-basis: 40px !important;
+  margin-bottom: 4px !important;
+  border: 1px solid rgba(117, 83, 158, .22) !important;
+  background: rgba(255, 255, 255, .5) !important;
+  color: #5d417d !important;
+}
+
+.detail-menu-toggle:hover {
+  border-color: rgba(117, 83, 158, .42) !important;
+  background: rgba(255, 255, 255, .78) !important;
+}
+
+.detail-menu-toggle svg {
+  transition: transform var(--detail-menu-motion);
+}
+
+body[data-detail-menu-mode="labels"] .detail-menu-toggle svg {
+  transform: rotate(180deg);
+}
+
+.detail-menu-toggle + .detail-icon-menu-separator {
+  margin-top: 0;
+}
+
+body[data-detail-menu-mode="labels"] .detail-icon-menu-separator {
+  width: calc(100% - 20px);
+  margin-inline: 10px;
+}
+
+/* In railstatus verdwijnt het volledige interne menu, ongeacht de gekozen stand. */
+#detailPanel.is-collapsed > .detail-composite-body,
+.detail-cluster.is-managed-rail > #detailPanel > .detail-composite-body {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #detailPanel .detail-composite-body,
+  .detail-icon-menu,
+  .detail-icon-menu button,
+  .detail-menu-label,
+  .detail-menu-toggle svg {
+    transition: none !important;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --detail-menu-labels-width: 172px;
+  }
+}

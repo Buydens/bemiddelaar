@@ -1,0 +1,171 @@
+@import url("profiles-thin-rails.css");
+
+/* Een echte vergelijkingstabel: horizontale scroll is hier bewust toegestaan. */
+.profile-list.is-table-view {
+  padding: 0 0 28px;
+  overflow: hidden;
+}
+
+.profile-table-scroll {
+  width: 100%;
+  border-bottom: 1px solid var(--line-soft);
+  background: #fff;
+}
+
+.profile-table {
+  width: 100%;
+  min-width: 880px;
+  border: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+  color: #414952;
+  font-size: 9px;
+}
+
+.profile-table th {
+  height: 34px;
+  padding: 0 10px;
+  border-bottom: 1px solid #d9dde3;
+  background: #f5f6f8;
+  color: #737b85;
+  font-size: 8px;
+  font-weight: 720;
+  letter-spacing: .035em;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.profile-table th:nth-child(2) { width: 210px; }
+.profile-table th:nth-child(3) { width: 94px; }
+.profile-table th:nth-child(4) { width: 152px; }
+.profile-table th:nth-child(5) { width: 145px; }
+.profile-table th:nth-child(6) { width: 140px; }
+.profile-table th:nth-child(7) { width: 108px; }
+
+.profile-table .table-select {
+  width: 42px;
+  padding-right: 5px;
+  padding-left: 12px;
+}
+
+.profile-table .table-open {
+  width: 34px;
+  padding-inline: 5px;
+  text-align: center;
+}
+
+.profile-table .profile-row {
+  position: static;
+  display: table-row;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+  outline-offset: -2px;
+}
+
+.profile-table .profile-row::before {
+  display: none;
+}
+
+.profile-table .profile-row td {
+  height: 58px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line-soft);
+  background: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
+  transition: background 120ms ease;
+}
+
+.profile-table .profile-row:hover td {
+  background: #f7f8fa;
+}
+
+.profile-table .profile-row.is-selected td {
+  background: #eef5ff;
+}
+
+.profile-table .profile-row.is-selected td:first-child {
+  box-shadow: inset 2px 0 0 var(--blue);
+}
+
+.profile-table .profile-row:focus-visible td {
+  background: #f1f6fd;
+}
+
+.table-profile {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+}
+
+.table-profile .avatar {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  font-size: 8px;
+}
+
+.table-profile .profile-main {
+  min-width: 0;
+}
+
+.table-profile .profile-main strong,
+.table-profile .profile-main span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-table .table-stage,
+.profile-table .table-updated {
+  color: #626b75;
+}
+
+.profile-table .status-pill {
+  width: max-content;
+}
+
+.profile-table .row-chevron {
+  margin-inline: auto;
+}
+
+/* Bewerken is een tijdelijk subpaneel en heeft nooit een eigen rail. */
+body[data-edit-presentation="subpanel"] #crudPanel.is-collapsed {
+  display: none !important;
+}
+
+body[data-edit-presentation="subpanel"] .detail-cluster:has(#crudPanel.is-collapsed) > #editDivider {
+  display: none !important;
+}
+
+body[data-edit-presentation="subpanel"] .detail-cluster:has(#detailPanel:not(.is-collapsed)):has(#crudPanel.is-collapsed) {
+  min-width: 340px;
+}
+
+body[data-edit-presentation="subpanel"] .detail-cluster:has(#detailPanel.is-collapsed):has(#crudPanel.is-collapsed) {
+  flex: 0 0 42px !important;
+  min-width: 42px;
+}
+
+body[data-edit-presentation="subpanel"] .workspace.has-maximized > .detail-cluster.has-maximized-child > #crudPanel.is-collapsed,
+body[data-edit-presentation="subpanel"] .workspace.has-maximized > .detail-cluster.has-maximized-child:has(#crudPanel.is-collapsed) > #editDivider {
+  display: none !important;
+}
+
+body[data-edit-presentation="subpanel"] .content-edit-action[aria-expanded="true"] {
+  border-color: #7fa7ca;
+  background: #dfeaf6;
+  color: #1f527f;
+}
+
+@container (max-width: 470px) {
+  .profile-table {
+    min-width: 820px;
+  }
+}

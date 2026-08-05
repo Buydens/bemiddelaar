@@ -1,0 +1,132 @@
+@import url("profiles-fullscreen.css");
+
+/*
+ * Paneelruimte blijft rustig: taakacties blijven zichtbaar, paneelbeheer
+ * verschijnt pas wanneer een paneel aandacht krijgt.
+ */
+@media (hover: hover) and (pointer: fine) {
+  .panel:not(.is-collapsed) .panel-header .panel-action {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-2px);
+    transition: opacity 120ms ease, transform 120ms ease, background-color 120ms ease;
+  }
+
+  .panel:not(.is-collapsed):hover .panel-header .panel-action,
+  .panel:not(.is-collapsed):focus-within .panel-header .panel-action,
+  .panel.is-maximized .panel-header .panel-action {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+
+/* De taakactie blijft herkenbaar; alleen de beheeracties worden progressief getoond. */
+.edit-detail-action {
+  flex: 0 0 auto;
+}
+
+/* De verhoudingen vullen altijd samen de beschikbare breedte. */
+@media (min-width: 761px) {
+  .overview-cluster {
+    flex: var(--panel-size, 1.15) 1 0;
+  }
+
+  #detailPanel:not(.is-collapsed) {
+    flex: var(--panel-size, 1.05) 1 0;
+    min-width: 280px;
+  }
+
+  #crudPanel:not(.is-collapsed) {
+    flex: var(--panel-size, .9) 1 0;
+    min-width: 280px;
+  }
+}
+
+/* De tussenruimte is tegelijk een stille, ruime schaalgreep. */
+.panel-resizer {
+  position: relative;
+  z-index: 12;
+  flex: 0 0 10px;
+  min-width: 10px;
+  cursor: col-resize;
+  touch-action: none;
+  user-select: none;
+}
+
+.panel-resizer::after {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 2px;
+  height: 46px;
+  border-radius: 2px;
+  background: #a8afb8;
+  content: "";
+  opacity: .28;
+  transform: translateY(-50%) scaleY(.48);
+  transition: opacity 130ms ease, transform 150ms ease, background-color 130ms ease;
+}
+
+.panel-resizer:hover::after,
+.panel-resizer:focus-visible::after,
+.panel-resizer.is-resizing::after {
+  background: #547596;
+  opacity: .9;
+  transform: translateY(-50%) scaleY(1);
+}
+
+.panel-resizer.is-resizing::after {
+  background: var(--blue);
+}
+
+.panel-resizer.is-collapse-pending::after {
+  background: #a76811;
+}
+
+.panel-resizer.is-disabled {
+  cursor: default;
+}
+
+.panel-resizer.is-disabled::after {
+  opacity: .1;
+  transform: translateY(-50%) scaleY(.32);
+}
+
+.panel-resizer.is-open-handle {
+  cursor: ew-resize;
+}
+
+.panel-resizer.is-open-handle::after {
+  background: #74879a;
+  opacity: .42;
+}
+
+.workspace.is-panel-resizing,
+.workspace.is-panel-resizing * {
+  cursor: col-resize !important;
+  user-select: none !important;
+}
+
+.workspace.is-panel-resizing .overview-cluster,
+.workspace.is-panel-resizing .dependent-panel {
+  transition: none;
+}
+
+@media (max-width: 760px) {
+  .panel-resizer {
+    flex-basis: 8px;
+    min-width: 8px;
+  }
+
+  .panel-resizer::after {
+    left: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel-resizer::after,
+  .panel:not(.is-collapsed) .panel-header .panel-action {
+    transition: none;
+  }
+}

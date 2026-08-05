@@ -1,0 +1,44 @@
+@import url("profiles-edge-rails.css");
+
+/*
+ * Pre-UI-gevoel: tijdens drag geen animatie; na de drempel één korte overgang
+ * van de minimumsbreedte naar exact één rail. Geen onmiddellijke max-width-klem.
+ */
+@media (min-width: 761px) {
+  body[data-rail-transition="classic"] .workspace:not(.has-maximized) > .detail-cluster:has(> #detailPanel.is-collapsed):has(> #crudPanel.is-collapsed),
+  body[data-rail-transition="classic"] .workspace:not(.has-maximized) > .detail-cluster:has(> #detailPanel.is-collapsed) > #detailPanel.is-collapsed {
+    width: auto;
+    max-width: none;
+    overflow: hidden;
+    transition:
+      flex-basis 220ms ease,
+      flex-grow 220ms ease,
+      flex-shrink 220ms ease,
+      min-width 220ms ease,
+      border-color 180ms ease,
+      box-shadow 180ms ease;
+  }
+
+  /* Het buurpaneel houdt zijn bestaande verhouding en neemt de ruimte continu over. */
+  body[data-rail-transition="classic"] .workspace:not(.has-maximized):has(> .detail-cluster > #detailPanel.is-collapsed) > .overview-cluster:not(.is-main-collapsed) {
+    flex: var(--cluster-size, 1.05) 1 0 !important;
+  }
+
+  body[data-rail-transition="classic"] .workspace:not(.has-maximized):has(> .overview-cluster.is-main-collapsed) > .detail-cluster:has(> #detailPanel:not(.is-collapsed)) {
+    flex: var(--cluster-size, 1.55) 1 0 !important;
+  }
+
+  body[data-rail-transition="classic"] .workspace.is-main-resizing > .overview-cluster,
+  body[data-rail-transition="classic"] .workspace.is-main-resizing > .detail-cluster,
+  body[data-rail-transition="classic"] .workspace.is-main-resizing > .detail-cluster > #detailPanel {
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-rail-transition="classic"] .workspace > .detail-cluster,
+  body[data-rail-transition="classic"] .workspace > .detail-cluster > #detailPanel {
+    transition: none;
+  }
+}
+

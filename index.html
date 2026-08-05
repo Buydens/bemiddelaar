@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="Een interactieve demo van een moderne werkruimte met beheerbare panelen."
+    />
+    <title>Werkruimte — panel demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand" aria-label="Werkruimte">
+          <span class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+          <span class="brand-name">Werkruimte</span>
+        </div>
+
+        <div class="project-context" aria-label="Huidige werkruimte">
+          <button class="breadcrumb-button" type="button">
+            <span class="context-label">Bemiddelaar</span>
+            <svg aria-hidden="true" viewBox="0 0 16 16">
+              <path d="m5 6 3 3 3-3" />
+            </svg>
+          </button>
+          <span class="save-state"><span class="status-dot"></span>Opgeslagen</span>
+        </div>
+
+        <div class="topbar-actions">
+          <div class="layout-picker">
+            <button
+              class="button button-secondary"
+              id="layoutButton"
+              type="button"
+              aria-haspopup="menu"
+              aria-expanded="false"
+            >
+              <svg aria-hidden="true" viewBox="0 0 18 18">
+                <rect x="2" y="3" width="4" height="12" rx="1" />
+                <rect x="7" y="3" width="5" height="12" rx="1" />
+                <rect x="13" y="3" width="3" height="12" rx="1" />
+              </svg>
+              <span>Indeling</span>
+              <svg class="chevron" aria-hidden="true" viewBox="0 0 16 16">
+                <path d="m5 6 3 3 3-3" />
+              </svg>
+            </button>
+            <div class="layout-menu" id="layoutMenu" role="menu" hidden>
+              <button type="button" role="menuitem" data-layout="equal">
+                <span class="layout-preview equal"><i></i><i></i><i></i></span>
+                <span><strong>Gelijk</strong><small>Even brede panelen</small></span>
+                <kbd>1</kbd>
+              </button>
+              <button type="button" role="menuitem" data-layout="focus">
+                <span class="layout-preview focus"><i></i><i></i><i></i></span>
+                <span><strong>Focus</strong><small>Ruimer middenpaneel</small></span>
+                <kbd>2</kbd>
+              </button>
+              <button type="button" role="menuitem" data-layout="context">
+                <span class="layout-preview context"><i></i><i></i><i></i></span>
+                <span><strong>Context</strong><small>Ruimer rechterpaneel</small></span>
+                <kbd>3</kbd>
+              </button>
+            </div>
+          </div>
+
+          <button class="button button-primary" id="addPanelButton" type="button">
+            <svg aria-hidden="true" viewBox="0 0 18 18"><path d="M9 4v10M4 9h10" /></svg>
+            <span>Paneel</span>
+          </button>
+
+          <button
+            class="icon-button avatar-button"
+            type="button"
+            aria-label="Profiel openen"
+            title="Profiel"
+          >
+            TV
+          </button>
+        </div>
+      </header>
+
+      <main class="workspace" id="workspace" aria-label="Werkpanelen">
+        <section class="panel" data-panel-id="1" data-panel-title="Overzicht" style="--panel-size: 0.9">
+          <header class="panel-header" draggable="true">
+            <div class="panel-identity">
+              <span class="panel-index">01</span>
+              <span class="panel-rail-icon" aria-hidden="true">
+                <svg viewBox="0 0 18 18"><path d="M5 2.75h5l3 3v9.5H5z" /><path d="M10 2.75v3h3" /></svg>
+              </span>
+              <span class="panel-title">Overzicht</span>
+            </div>
+            <div class="panel-controls">
+              <button class="panel-action maximize-action" type="button" aria-label="Paneel maximaliseren" title="Maximaliseren">
+                <svg class="maximize-icon" aria-hidden="true" viewBox="0 0 18 18"><path d="M5 2.75H2.75V5M13 2.75h2.25V5M5 15.25H2.75V13M13 15.25h2.25V13" /></svg>
+                <svg class="restore-icon" aria-hidden="true" viewBox="0 0 18 18"><path d="M2.75 6H6V2.75M15.25 6H12V2.75M2.75 12H6v3.25M15.25 12H12v3.25" /></svg>
+              </button>
+              <button class="panel-action close-action" type="button" aria-label="Paneel sluiten naar rail" title="Sluiten naar rail">
+                <svg aria-hidden="true" viewBox="0 0 18 18"><path d="m5.5 5.5 7 7M12.5 5.5l-7 7" /></svg>
+              </button>
+            </div>
+          </header>
+          <div class="panel-body">
+            <div class="grid-stage">
+              <div class="grid-labels" aria-hidden="true"></div>
+              <div class="grid-canvas">
+                <div class="grid-note">
+                  <span>12 kolommen</span>
+                  <small>Het grid past zich aan de paneelbreedte aan</small>
+                </div>
+                <div class="grid-example example-overview" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="resizer" role="separator" aria-orientation="vertical" aria-label="Paneelbreedte aanpassen" tabindex="0"></div>
+
+        <section class="panel is-active" data-panel-id="2" data-panel-title="Detail" style="--panel-size: 1.35">
+          <header class="panel-header" draggable="true">
+            <div class="panel-identity">
+              <span class="panel-index">02</span>
+              <span class="panel-rail-icon" aria-hidden="true">
+                <svg viewBox="0 0 18 18"><path d="M5 2.75h5l3 3v9.5H5z" /><path d="M10 2.75v3h3" /></svg>
+              </span>
+              <span class="panel-title">Detail</span>
+            </div>
+            <div class="panel-controls">
+              <button class="panel-action maximize-action" type="button" aria-label="Paneel maximaliseren" title="Maximaliseren">
+                <svg class="maximize-icon" aria-hidden="true" viewBox="0 0 18 18"><path d="M5 2.75H2.75V5M13 2.75h2.25V5M5 15.25H2.75V13M13 15.25h2.25V13" /></svg>
+                <svg class="restore-icon" aria-hidden="true" viewBox="0 0 18 18"><path d="M2.75 6H6V2.75M15.25 6H12V2.75M2.75 12H6v3.25M15.25 12H12v3.25" /></svg>
+              </button>
+              <button class="panel-action close-action" type="button" aria-label="Paneel sluiten naar rail" title="Sluiten naar rail">
+                <svg aria-hidden="true" viewBox="0 0 18 18"><path d="m5.5 5.5 7 7M12.5 5.5l-7 7" /></svg>
+              </button>
+            </div>
+          </header>
+          <div class="panel-body">
+            <div class="grid-stage">
+              <div class="grid-labels" aria-hidden="true"></div>
+              <div class="grid-canvas">
+                <div class="grid-note">
+                  <span>12 kolommen</span>
+                  <small>Sleep de randen om 12 · 8 · 4 te testen</small>
+                </div>
+                <div class="grid-example example-workspace" aria-hidden="true">
+                  <span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="resizer" role="separator" aria-orientation="vertical" aria-label="Paneelbreedte aanpassen" tabindex="0"></div>
+
+        <section class="panel" data-panel-id="3" data-panel-title="CRUD" style="--panel-size: 0.75">
+          <header class="panel-header" draggable="true">
+            <div class="panel-identity">
+              <span class="panel-index">03</span>
+              <span class="panel-rail-icon" aria-hidden="true">
+                <svg viewBox="0 0 18 18"><path d="M5 2.75h5l3 3v9.5H5z" /><path d="M10 2.75v3h3" /></svg>
+              </span>
+              <span class="panel-title">CRUD</span>
+            </div>
+            <div class="panel-controls">
+              <button class="panel-action maximize-action" type="button" aria-label="Paneel maximaliseren" title="Maximaliseren">
+                <svg class="maximize-icon" aria-hidden="true" viewBox="0 0 18 18"><path d="M5 2.75H2.75V5M13 2.75h2.25V5M5 15.25H2.75V13M13 15.25h2.25V13" /></svg>
+                <svg class="restore-icon" aria-hidden="true" viewBox="0 0 18 18"><path d="M2.75 6H6V2.75M15.25 6H12V2.75M2.75 12H6v3.25M15.25 12H12v3.25" /></svg>
+              </button>
+              <button class="panel-action close-action" type="button" aria-label="Paneel sluiten naar rail" title="Sluiten naar rail">
+                <svg aria-hidden="true" viewBox="0 0 18 18"><path d="m5.5 5.5 7 7M12.5 5.5l-7 7" /></svg>
+              </button>
+            </div>
+          </header>
+          <div class="panel-body">
+            <div class="grid-stage">
+              <div class="grid-labels" aria-hidden="true"></div>
+              <div class="grid-canvas">
+                <div class="grid-note">
+                  <span>12 kolommen</span>
+                  <small>Beheeracties herschikken mee</small>
+                </div>
+                <div class="grid-example example-context" aria-hidden="true">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="statusbar">
+        <div><span class="status-dot"></span><span id="panelCount">3 panelen open</span></div>
+        <div class="status-help">
+          <span><kbd>⌥</kbd> + <kbd>1–3</kbd> indeling</span>
+          <span class="status-divider"></span>
+          <span>Sleep langs minimum om rails te openen of sluiten</span>
+        </div>
+        <span class="viewport-state" id="viewportState">Desktop</span>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

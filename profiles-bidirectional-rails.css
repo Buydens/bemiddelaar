@@ -1,0 +1,85 @@
+@import url("profiles-table-subpanels.css");
+
+.overview-rail-icon {
+  display: none;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  color: #717a85;
+}
+
+.overview-rail-icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+body[data-main-rails="both"] .overview-cluster.is-main-collapsed {
+  flex: 0 0 42px !important;
+  min-width: 42px;
+  overflow: hidden;
+  border-color: var(--line);
+  border-radius: 9px;
+  background: #f3f4f6;
+  box-shadow: none;
+}
+
+body[data-main-rails="both"] .overview-cluster.is-main-collapsed::before,
+body[data-main-rails="both"] .overview-cluster.is-main-collapsed > #filterPanel,
+body[data-main-rails="both"] .overview-cluster.is-main-collapsed > #utilityDivider {
+  display: none !important;
+}
+
+body[data-main-rails="both"] .overview-cluster.is-main-collapsed > #overviewPanel {
+  display: grid;
+  flex: 0 0 40px !important;
+  grid-template-rows: minmax(0, 1fr);
+  width: 40px;
+  min-width: 40px;
+  border: 0;
+  border-radius: 8px;
+  background: #f3f4f6;
+}
+
+body[data-main-rails="both"] .overview-cluster.is-main-collapsed > #overviewPanel::after {
+  display: none;
+}
+
+body[data-main-rails="both"] .overview-cluster.is-main-collapsed #overviewPanel .panel-header {
+  height: 100%;
+  justify-content: flex-start;
+  padding: 14px 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+body[data-main-rails="both"] .overview-cluster.is-main-collapsed #overviewPanel .panel-header:hover,
+body[data-main-rails="both"] .overview-cluster.is-main-collapsed #overviewPanel .panel-header:focus-visible {
+  background: var(--blue-soft);
+}
+
+body[data-main-rails="both"] .overview-cluster.is-main-collapsed #overviewPanel .panel-title-group {
+  align-self: stretch;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+body[data-main-rails="both"] .overview-cluster.is-main-collapsed #overviewPanel .overview-rail-icon {
+  display: grid;
+}
+
+body[data-main-rails="both"] .overview-cluster.is-main-collapsed #overviewPanel .panel-number,
+body[data-main-rails="both"] .overview-cluster.is-main-collapsed #overviewPanel .result-badge,
+body[data-main-rails="both"] .overview-cluster.is-main-collapsed #overviewPanel .linked-state,
+body[data-main-rails="both"] .overview-cluster.is-main-collapsed #overviewPanel .panel-actions,
+body[data-main-rails="both"] .overview-cluster.is-main-collapsed #overviewPanel .overview-body {
+  display: none !important;
+}
+
+body[data-main-rails="both"] .overview-cluster.is-main-collapsed #overviewPanel h1 {
+  writing-mode: vertical-rl;
+  overflow: visible;
+  color: #606975;
+  font-size: 13px;
+}

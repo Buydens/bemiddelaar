@@ -1,0 +1,50 @@
+@import url("profiles-linked-filters.css");
+
+.tool-row {
+  grid-template-columns: auto minmax(180px, 1fr) auto;
+}
+
+#filterButton {
+  grid-column: 1;
+}
+
+.search-field {
+  grid-column: 2;
+}
+
+.sort-field {
+  grid-column: 3;
+}
+
+.workspace.is-utility-open .overview-cluster {
+  border-color: #7896a3;
+  box-shadow: 0 0 0 2px rgba(71, 105, 120, .15), 0 8px 24px rgba(42, 66, 77, .06);
+}
+
+.workspace.is-utility-open .overview-cluster::before {
+  height: 3px;
+  background: linear-gradient(90deg, #4f7788, #829faa 38%, #789ec4 70%, #3c78b8);
+}
+
+.workspace.is-utility-open .overview-cluster > .utility-divider::after {
+  top: 36%;
+  bottom: 36%;
+  background: #5f7e8a;
+}
+
+#filterButton[aria-expanded="true"] {
+  border-color: #7896a3;
+  background: #e1eaee;
+  box-shadow: 0 0 0 2px rgba(71, 105, 120, .08);
+  color: #355966;
+}
+
+@media (max-width: 620px) {
+  .tool-row {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  #filterButton { grid-column: 1; }
+  .search-field { grid-column: 2; }
+  .sort-field { grid-column: 1 / -1; }
+}

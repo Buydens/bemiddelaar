@@ -1,0 +1,97 @@
+@import url("profiles-detail-navigation-refined.css");
+
+/* Navigatie leeft binnen de eigenaar Detail en kan daardoor nooit een rail zijn. */
+#detailPanel .detail-composite-body {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  padding: 0;
+  overflow: hidden;
+}
+
+#detailPanel .detail-composite-body:has(> .detail-icon-menu[hidden]) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.detail-icon-menu[hidden] {
+  display: none;
+}
+
+.detail-icon-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  min-width: 0;
+  padding: 8px 6px 14px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-right: 1px solid var(--nav-utility-line);
+  background: var(--nav-utility-bg);
+  scrollbar-width: none;
+}
+
+.detail-icon-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.detail-icon-menu button {
+  position: relative;
+  display: grid;
+  flex: 0 0 40px;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: #775a99;
+  cursor: pointer;
+}
+
+.detail-icon-menu button:hover {
+  background: rgba(97, 75, 130, .09);
+  color: #4c3567;
+}
+
+.detail-icon-menu button.is-active {
+  background: #e5ddee;
+  box-shadow: inset 2px 0 0 #75539e;
+  color: #43285f;
+}
+
+.detail-icon-menu button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.detail-icon-menu-separator {
+  flex: 0 0 1px;
+  width: 30px;
+  height: 1px;
+  margin: 7px 0;
+  background: var(--nav-utility-line);
+}
+
+.detail-content-pane {
+  min-width: 0;
+  min-height: 0;
+  padding: 18px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--surface);
+}
+
+/* De rail bevat uitsluitend de header en titel van de eigenaar Detail. */
+body[data-detail-navigation="menu"] .detail-cluster:has(> #detailPanel.is-collapsed) > #detailPanel.is-collapsed > .detail-composite-body {
+  display: none !important;
+}
+
+@media (max-width: 760px) {
+  #detailPanel .detail-composite-body {
+    grid-template-columns: 48px minmax(0, 1fr);
+  }
+
+  .detail-icon-menu {
+    padding-inline: 4px;
+  }
+}

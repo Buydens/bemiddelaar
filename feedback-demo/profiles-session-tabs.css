@@ -1,0 +1,171 @@
+@import url("profiles-session-bar.css");
+
+:root {
+  --session-bar-height: 142px;
+}
+
+.session-panel {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  padding: 0 18px;
+}
+
+.session-tabs-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 58px;
+  width: 100%;
+  min-width: 0;
+}
+
+.session-tabs-list,
+.work-session-scroll {
+  display: flex;
+  min-width: 0;
+  height: 100%;
+  align-items: stretch;
+}
+
+.work-session-scroll {
+  flex: 1 1 auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: none;
+}
+
+.work-session-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.work-session-tab,
+.new-session-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  background: transparent;
+  color: #59636f;
+  cursor: pointer;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.work-session-tab {
+  flex: 0 0 auto;
+  gap: 8px;
+  min-width: 0;
+  max-width: 230px;
+  padding: 0 24px;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 560;
+  white-space: nowrap;
+}
+
+.work-session-tab > span:not(.session-state-dot) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.work-session-tab svg {
+  flex: 0 0 auto;
+  width: 17px;
+  height: 17px;
+}
+
+.work-session-tab small {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding-inline: 5px;
+  border-radius: 9px;
+  background: #e8ebef;
+  color: #727c88;
+  font-size: 9px;
+  font-weight: 680;
+}
+
+.work-session-tab:hover,
+.new-session-button:hover {
+  background: #f3f5f7;
+  color: #242a31;
+}
+
+.work-session-tab.is-active {
+  background: #f7f9fc;
+  box-shadow: inset 0 -2px 0 var(--blue);
+  color: #1d2835;
+  font-weight: 660;
+}
+
+.session-state-dot {
+  flex: 0 0 auto;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22a06b;
+}
+
+.session-home-tab {
+  padding-inline: 20px 24px;
+}
+
+.session-tabs-divider {
+  align-self: center;
+  flex: 0 0 1px;
+  width: 1px;
+  height: 30px;
+  background: var(--line);
+}
+
+.new-session-button {
+  width: 58px;
+  padding: 0;
+  border-left: 1px solid var(--line);
+}
+
+.new-session-button svg {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 560px) {
+  :root {
+    --session-bar-height: 128px;
+  }
+
+  .session-panel {
+    padding-inline: 8px;
+  }
+
+  .session-tabs-layout {
+    grid-template-columns: minmax(0, 1fr) 48px;
+  }
+
+  .work-session-tab {
+    max-width: 188px;
+    padding-inline: 16px;
+  }
+
+  .session-home-tab {
+    padding-inline: 10px 14px;
+  }
+
+  .session-home-tab svg {
+    display: none;
+  }
+
+  .new-session-button {
+    width: 48px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-session-tab,
+  .new-session-button {
+    transition: none;
+  }
+}

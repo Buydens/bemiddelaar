@@ -1,0 +1,36 @@
+@import url("profiles-detail-navigation-patterns.css");
+
+/*
+ * De groep krijgt één silhouet. Alleen de hoeken aan de buitenrand zijn rond;
+ * de raakvlakken tussen Menu, Detail en Bewerken blijven recht.
+ */
+.detail-cluster:has(> #detailMenuPanel:not([hidden])) {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.detail-cluster:has(> #detailMenuPanel:not([hidden])) > #detailMenuPanel {
+  overflow: hidden;
+  border-radius: 9px 0 0 9px;
+}
+
+.detail-cluster:has(> #detailMenuPanel:not([hidden])) > #detailPanel:not(.is-collapsed) {
+  overflow: hidden;
+  border-radius: 0 9px 9px 0;
+}
+
+/* Met Bewerken open verhuist de rechter buitenafronding naar dat subpaneel. */
+.detail-cluster:has(> #detailMenuPanel:not([hidden])):has(> #crudPanel:not(.is-collapsed)) > #detailPanel:not(.is-collapsed) {
+  border-radius: 0;
+}
+
+.detail-cluster:has(> #detailMenuPanel:not([hidden])):has(> #crudPanel:not(.is-collapsed)) > #crudPanel {
+  overflow: hidden;
+  border-radius: 0 9px 9px 0;
+}
+
+.detail-cluster:has(> #detailMenuPanel:not([hidden])) > #detailMenuPanel::after,
+.detail-cluster:has(> #detailMenuPanel:not([hidden])) > #detailPanel::after,
+.detail-cluster:has(> #detailMenuPanel:not([hidden])) > #crudPanel::after {
+  display: none;
+}

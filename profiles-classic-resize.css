@@ -1,0 +1,32 @@
+@import url("profiles-bidirectional-rails.css");
+
+/*
+ * Het vroegere resizegevoel, toegepast op de semantische paneelgroepen:
+ * de inhoud reflowt verder vooraleer de hoofdpanelen een harde grens raken.
+ */
+@media (min-width: 761px) {
+  body[data-resize-feel="classic"] .overview-cluster,
+  body[data-resize-feel="classic"] .overview-cluster > .overview-panel,
+  body[data-resize-feel="classic"] .detail-cluster > #detailPanel:not(.is-collapsed) {
+    min-width: 232px;
+  }
+
+  body[data-resize-feel="classic"] .detail-cluster:has(#detailPanel:not(.is-collapsed)):has(#crudPanel.is-collapsed) {
+    min-width: 232px;
+  }
+
+  body[data-resize-feel="classic"] .detail-cluster:has(#crudPanel:not(.is-collapsed)) {
+    min-width: 490px;
+  }
+
+  body[data-resize-feel="classic"] .detail-cluster > #crudPanel:not(.is-collapsed) {
+    min-width: 250px;
+  }
+}
+
+/* De greep blijft exact onder de pointer; alleen de uiteindelijke railovergang animeert. */
+body[data-resize-feel="classic"] .workspace.is-main-resizing .overview-cluster,
+body[data-resize-feel="classic"] .workspace.is-main-resizing .detail-cluster,
+body[data-resize-feel="classic"] .workspace.is-main-resizing .panel {
+  transition: none;
+}

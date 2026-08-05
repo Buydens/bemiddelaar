@@ -1,0 +1,23 @@
+@import url("profiles-smooth-rail-transition.css");
+
+/* Eén pointerbeweging bestuurt zowel paneelbreedte als de tijdelijke railbreedte. */
+@media (min-width: 761px) {
+  body[data-continuous-resize="true"] .workspace.is-main-resizing > .panel-cluster.is-continuous-rail-drag {
+    flex: 0 0 var(--continuous-rail-size, 42px) !important;
+    width: var(--continuous-rail-size, 42px);
+    min-width: var(--continuous-rail-size, 42px) !important;
+    max-width: var(--continuous-rail-size, 42px);
+    overflow: hidden;
+    transition: none !important;
+  }
+
+  body[data-continuous-resize="true"] .workspace.is-main-resizing > .overview-cluster.is-continuous-rail-drag > #overviewPanel,
+  body[data-continuous-resize="true"] .workspace.is-main-resizing > .detail-cluster.is-continuous-rail-drag > #detailPanel {
+    flex: 1 1 auto !important;
+    width: auto;
+    min-width: 0 !important;
+    max-width: none;
+    transition: none !important;
+  }
+}
+

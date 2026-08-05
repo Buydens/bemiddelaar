@@ -1,0 +1,97 @@
+@import url("profiles-semantic-headings.css");
+
+#focusOverviewButton[hidden] {
+  display: none;
+}
+
+.maximize-action .restore-icon {
+  display: none;
+}
+
+.panel.is-maximized .maximize-action {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.panel.is-maximized .maximize-action .maximize-icon {
+  display: none;
+}
+
+.panel.is-maximized .maximize-action .restore-icon {
+  display: block;
+}
+
+.workspace.has-maximized {
+  overflow: hidden;
+}
+
+.workspace.has-maximized > * {
+  display: none !important;
+}
+
+.workspace.has-maximized > .panel.is-maximized {
+  display: grid !important;
+  flex: 1 1 100% !important;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+}
+
+.workspace.has-maximized > .overview-cluster.has-maximized-child {
+  display: flex !important;
+  flex: 1 1 100% !important;
+  min-width: 0;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.workspace.has-maximized > .overview-cluster.has-maximized-child::before {
+  display: none;
+}
+
+.workspace.has-maximized > .overview-cluster.has-maximized-child > * {
+  display: none !important;
+}
+
+.workspace.has-maximized > .overview-cluster.has-maximized-child > .panel.is-maximized {
+  display: grid !important;
+  flex: 1 1 100% !important;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+}
+
+.workspace.has-maximized .panel.is-maximized::after {
+  display: block;
+  border-color: rgba(18, 101, 219, .28);
+}
+
+.workspace.has-maximized .utility-panel.is-maximized {
+  border-color: #78a087;
+}
+
+.workspace.has-maximized .utility-panel.is-maximized::after {
+  border-color: rgba(52, 119, 76, .3);
+}
+
+.workspace.has-maximized #crudPanel.is-maximized {
+  border-color: #8eadc9;
+}
+
+.workspace.has-maximized #crudPanel.is-maximized::after {
+  border-color: rgba(53, 105, 153, .3);
+}
+
+@media (max-width: 620px) {
+  .workspace.has-maximized > .panel.is-maximized,
+  .workspace.has-maximized > .overview-cluster.has-maximized-child > .panel.is-maximized {
+    flex-basis: 100% !important;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+  }
+}

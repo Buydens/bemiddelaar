@@ -1,0 +1,20 @@
+@import url("profiles-responsive-groups.css");
+
+body[data-rail-width="42"] .dependent-panel.is-collapsed {
+  flex: 0 0 42px !important;
+  min-width: 42px;
+}
+
+body[data-rail-width="42"] .detail-cluster:has(#detailPanel.is-collapsed):has(#crudPanel.is-collapsed) {
+  flex: 0 0 92px !important;
+  min-width: 92px;
+}
+
+body[data-rail-width="42"] .detail-cluster:has(#detailPanel:not(.is-collapsed)):has(#crudPanel.is-collapsed) {
+  min-width: 390px;
+}
+
+body[data-rail-width="42"] .workspace.has-maximized > .detail-cluster.has-maximized-child > #crudPanel.is-collapsed {
+  flex-basis: 42px !important;
+  min-width: 42px;
+}

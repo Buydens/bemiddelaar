@@ -1,0 +1,41 @@
+@import url("profiles-semantic-colors.css");
+
+.utility-group {
+  display: flow-root;
+  padding-top: 17px;
+  padding-bottom: 18px;
+}
+
+.utility-group legend {
+  display: flex;
+  float: left;
+  align-items: center;
+  gap: 7px;
+  width: 100%;
+  margin: 0 0 11px;
+  padding: 0;
+  font-size: 10px;
+  font-weight: 720;
+  line-height: 1.25;
+  letter-spacing: .015em;
+  text-transform: none;
+}
+
+.utility-group legend::before {
+  display: block;
+  flex: 0 0 2px;
+  width: 2px;
+  height: 12px;
+  border-radius: 2px;
+  background: var(--filter-green);
+  content: "";
+}
+
+.utility-options,
+.utility-tags {
+  clear: both;
+}
+
+.utility-options-inline {
+  padding-top: 1px;
+}

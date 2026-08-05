@@ -1,0 +1,46 @@
+@import url("profiles-classic-resize.css");
+
+/* De checkbox blijft visueel compact; de volledige selectiekolom is het doel. */
+body[data-selection-hitarea="cell"] .profile-table .table-select {
+  width: 48px;
+}
+
+body[data-selection-hitarea="cell"] .profile-table td.table-select {
+  position: relative;
+  padding: 0;
+  overflow: visible;
+}
+
+body[data-selection-hitarea="cell"] .profile-table .profile-select-target {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+body[data-selection-hitarea="cell"] .profile-select-target .profile-check {
+  flex: 0 0 auto;
+  width: 17px;
+  height: 17px;
+}
+
+/* Ook de slatweergave krijgt minstens een comfortabele 34 × 46 px hitarea. */
+body[data-selection-hitarea="cell"] .profile-list:not(.is-table-view) .profile-select-target {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 46px;
+  margin: -14px -6px;
+  cursor: pointer;
+}
+
+body[data-selection-hitarea="cell"] .profile-select-target:hover .profile-check {
+  outline: 3px solid rgba(31, 94, 162, .1);
+  outline-offset: 2px;
+}
+
+body[data-selection-hitarea="cell"] .profile-select-target:focus-within .profile-check {
+  outline: 3px solid rgba(31, 94, 162, .18);
+  outline-offset: 2px;
+}

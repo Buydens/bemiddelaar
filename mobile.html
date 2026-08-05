@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="color-scheme" content="light" />
+    <meta name="description" content="Mobiele visualisatie van de paneelwerkruimte." />
+    <title>Werkruimte — mobiele paneelmodus</title>
+    <link rel="stylesheet" href="mobile.css" />
+  </head>
+  <body>
+    <aside class="preview-meta" aria-label="Demoversie">
+      <div>
+        <span class="preview-kicker">Nieuwe versie</span>
+        <strong>Mobiele paneelmodus</strong>
+      </div>
+      <a href="index.html">Desktopversie</a>
+    </aside>
+
+    <div class="mobile-app">
+      <header class="app-header">
+        <div class="brand" aria-label="Werkruimte">
+          <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>Werkruimte</span>
+        </div>
+        <div class="workspace-name">
+          <span>Bemiddelaar</span>
+          <svg aria-hidden="true" viewBox="0 0 16 16"><path d="m5 6 3 3 3-3" /></svg>
+        </div>
+        <button class="header-action" type="button" aria-label="Meer opties" title="Meer opties">
+          <svg aria-hidden="true" viewBox="0 0 18 18"><circle cx="4" cy="9" r="1" /><circle cx="9" cy="9" r="1" /><circle cx="14" cy="9" r="1" /></svg>
+        </button>
+      </header>
+
+      <nav class="panel-tabs" role="tablist" aria-label="Werkpanelen">
+        <button
+          class="panel-tab is-active"
+          id="tab-overview"
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-overview"
+          data-panel="overview"
+        >
+          <span>Overzicht</span>
+        </button>
+        <button
+          class="panel-tab"
+          id="tab-detail"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-detail"
+          data-panel="detail"
+        >
+          <span>Detail</span>
+        </button>
+        <button
+          class="panel-tab"
+          id="tab-crud"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-crud"
+          data-panel="crud"
+        >
+          <span>CRUD</span>
+        </button>
+      </nav>
+
+      <main class="mobile-workspace" id="mobileWorkspace">
+        <section
+          class="mobile-panel is-active"
+          id="panel-overview"
+          role="tabpanel"
+          aria-labelledby="tab-overview"
+          data-panel="overview"
+        >
+          <div class="mobile-panel-scroll">
+            <div class="grid-caption"><span>4 kolommen</span><small>Mobiele compositie</small></div>
+            <div class="column-labels" aria-hidden="true"><span>01</span><span>02</span><span>03</span><span>04</span></div>
+            <div class="mobile-grid overview-grid" aria-label="Vierkoloms gridvisualisatie">
+              <div class="placeholder block-hero"><span>4 / 4</span></div>
+              <div class="placeholder block-half-a"><span>2 / 4</span></div>
+              <div class="placeholder block-half-b"><span>2 / 4</span></div>
+              <div class="placeholder block-wide"><span>4 / 4</span></div>
+              <div class="placeholder block-tall"><span>4 / 4</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="mobile-panel"
+          id="panel-detail"
+          role="tabpanel"
+          aria-labelledby="tab-detail"
+          data-panel="detail"
+          hidden
+        >
+          <div class="mobile-panel-scroll">
+            <div class="grid-caption"><span>4 kolommen</span><small>Detail stapelt verticaal</small></div>
+            <div class="column-labels" aria-hidden="true"><span>01</span><span>02</span><span>03</span><span>04</span></div>
+            <div class="mobile-grid detail-grid" aria-label="Vierkoloms gridvisualisatie">
+              <div class="placeholder detail-main"><span>3 / 4</span></div>
+              <div class="placeholder detail-aside"><span>1 / 4</span></div>
+              <div class="placeholder detail-full"><span>4 / 4</span></div>
+              <div class="placeholder detail-row-a"><span>4 / 4</span></div>
+              <div class="placeholder detail-row-b"><span>4 / 4</span></div>
+              <div class="placeholder detail-row-c"><span>4 / 4</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          class="mobile-panel"
+          id="panel-crud"
+          role="tabpanel"
+          aria-labelledby="tab-crud"
+          data-panel="crud"
+          hidden
+        >
+          <div class="mobile-panel-scroll">
+            <div class="grid-caption"><span>4 kolommen</span><small>Beheeracties blijven bereikbaar</small></div>
+            <div class="column-labels" aria-hidden="true"><span>01</span><span>02</span><span>03</span><span>04</span></div>
+            <div class="mobile-grid crud-grid" aria-label="Vierkoloms gridvisualisatie">
+              <div class="placeholder crud-toolbar"><span>4 / 4</span></div>
+              <div class="placeholder crud-field-a"><span>2 / 4</span></div>
+              <div class="placeholder crud-field-b"><span>2 / 4</span></div>
+              <div class="placeholder crud-form"><span>4 / 4</span></div>
+              <div class="placeholder crud-actions"><span>4 / 4</span></div>
+              <div class="placeholder crud-list"><span>4 / 4</span></div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="mobile-status">
+        <span class="save-state"><i></i>Opgeslagen</span>
+        <div class="page-dots" aria-label="Paneel 1 van 3">
+          <i class="is-active"></i><i></i><i></i>
+        </div>
+        <span>Swipe om te wisselen</span>
+      </footer>
+    </div>
+
+    <script src="mobile.js"></script>
+  </body>
+</html>

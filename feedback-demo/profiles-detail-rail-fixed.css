@@ -1,0 +1,12 @@
+@import url("profiles-detail-dropdown-fullwidth.css");
+
+/*
+ * Een rail vertegenwoordigt altijd het eigenaarspaneel. Interne patronen zoals
+ * navigatie, dropdowns en bewerkbare inhoud mogen de railstatus niet overleven.
+ * De selector staat bewust los van de gekozen detailnavigatie, zodat dit ook
+ * blijft werken voor toekomstige detailvarianten.
+ */
+#detailPanel.is-collapsed > .detail-composite-body,
+.detail-cluster.is-managed-rail > #detailPanel > .detail-composite-body {
+  display: none !important;
+}

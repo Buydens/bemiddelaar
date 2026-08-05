@@ -1,0 +1,73 @@
+@import url("profiles-detail-rail-fixed.css");
+
+/* Fullscreen behoudt een echte werkruimtegoot tussen de contextrail en groep. */
+body[data-fullscreen-others="rails"] #workspace.workspace.has-maximized {
+  gap: 8px;
+}
+
+/*
+ * Detail en Bewerken vormen steeds één eigenaar–taakgroep. De buitenrand en
+ * afronding behoren aan de groep; de interne panelen krijgen rechte naden.
+ */
+.detail-cluster:has(> #detailPanel:not(.is-collapsed)):has(> #crudPanel:not(.is-collapsed)) {
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--edit-utility-line) !important;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #fff 0 48%, var(--edit-utility-bg) 72% 100%);
+  box-shadow: 0 0 0 2px rgba(53, 105, 153, .1), 0 8px 24px rgba(45, 85, 123, .045);
+}
+
+.detail-cluster:has(> #detailPanel:not(.is-collapsed)):has(> #crudPanel:not(.is-collapsed))::before {
+  display: block !important;
+}
+
+.detail-cluster:has(> #detailPanel:not(.is-collapsed)):has(> #crudPanel:not(.is-collapsed)) > #detailPanel,
+.detail-cluster:has(> #detailPanel:not(.is-collapsed)):has(> #crudPanel:not(.is-collapsed)) > #crudPanel {
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none;
+}
+
+.detail-cluster:has(> #detailPanel:not(.is-collapsed)):has(> #crudPanel:not(.is-collapsed)) > #detailPanel::after,
+.detail-cluster:has(> #detailPanel:not(.is-collapsed)):has(> #crudPanel:not(.is-collapsed)) > #crudPanel::after {
+  display: none !important;
+}
+
+.detail-cluster:has(> #detailPanel:not(.is-collapsed)):has(> #crudPanel:not(.is-collapsed)) > #editDivider {
+  flex: 0 0 8px !important;
+  width: 8px;
+  min-width: 8px;
+  background: linear-gradient(90deg, #fff 0 44%, var(--edit-utility-bg) 56% 100%) !important;
+}
+
+/* De moer blijft onderdeel van de vaste bovenste rij, ook bij fullscreen. */
+.topbar > .prototype-settings {
+  position: absolute;
+  z-index: 3;
+  top: calc(var(--topbar-height) / 2);
+  right: 14px;
+  transform: translateY(-50%);
+}
+
+/*
+ * De 34px-maat hoort bij de buitenrail. Het eigenaarspaneel vult alleen de
+ * binnenmaat, zodat geen van beide verticale buitenranden wordt afgeknipt.
+ */
+body[data-rail-width="34"] #workspace > .detail-cluster:has(> #detailPanel.is-collapsed):has(> #crudPanel.is-collapsed) {
+  overflow: hidden !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 9px !important;
+  background: #f3f4f6 !important;
+  box-shadow: none !important;
+}
+
+body[data-rail-width="34"] #workspace > .detail-cluster:has(> #detailPanel.is-collapsed):has(> #crudPanel.is-collapsed) > #detailPanel.is-collapsed {
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  background: transparent;
+}

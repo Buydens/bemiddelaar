@@ -1,0 +1,91 @@
+@import url("profiles-panel-management.css");
+
+/*
+ * De railactie is paneelbeheer van de eigenaar. Een bestaande X op diezelfde
+ * eigenaar wordt in deze versie daarom vervangen; subpanelen behouden hun X.
+ */
+body[data-rail-action="managed"] .panel[data-panel-role="owner"] .panel-actions > .collapse-dependent {
+  display: none !important;
+}
+
+.collapse-to-rail-action svg {
+  overflow: visible;
+}
+
+.collapse-to-rail-action .rail-action-frame {
+  opacity: .55;
+}
+
+.collapse-to-rail-action .rail-action-edge {
+  stroke-width: 1.75;
+}
+
+.panel-cluster[data-rail-side="left"] .collapse-to-rail-action svg {
+  transform: scaleX(-1);
+}
+
+/* Generieke fallback voor toekomstige eigenaarspanelen met dezelfde contracten. */
+@media (min-width: 761px) {
+  body[data-rail-action="managed"] .workspace:not(.has-maximized) > .panel-cluster[data-rail-side].is-managed-rail {
+    flex: 0 0 42px !important;
+    width: 42px;
+    min-width: 42px !important;
+    max-width: 42px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    background: #f3f4f6;
+    box-shadow: none;
+  }
+
+  body[data-rail-action="managed"] .panel-cluster.is-managed-rail > :not(.panel[data-panel-role="owner"]),
+  body[data-rail-action="managed"] .panel-cluster.is-managed-rail > .panel[data-panel-role="owner"] > :not(.panel-header) {
+    display: none !important;
+  }
+
+  body[data-rail-action="managed"] .panel-cluster.is-managed-rail > .panel[data-panel-role="owner"] {
+    display: grid;
+    grid-template-rows: minmax(0, 1fr);
+    width: 40px;
+    min-width: 40px;
+    height: 100%;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+  }
+
+  body[data-rail-action="managed"] .panel-cluster.is-managed-rail > .panel[data-panel-role="owner"] > .panel-header {
+    height: 100%;
+    justify-content: flex-start;
+    padding: 14px 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  body[data-rail-action="managed"] .panel-cluster.is-managed-rail > .panel[data-panel-role="owner"] > .panel-header:hover,
+  body[data-rail-action="managed"] .panel-cluster.is-managed-rail > .panel[data-panel-role="owner"] > .panel-header:focus-visible {
+    background: var(--blue-soft);
+  }
+
+  body[data-rail-action="managed"] .panel-cluster.is-managed-rail .panel-title-group {
+    align-self: stretch;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  body[data-rail-action="managed"] .panel-cluster.is-managed-rail .panel-title-group > :not(h1):not(h2),
+  body[data-rail-action="managed"] .panel-cluster.is-managed-rail .panel-actions {
+    display: none !important;
+  }
+
+  body[data-rail-action="managed"] .panel-cluster.is-managed-rail h1,
+  body[data-rail-action="managed"] .panel-cluster.is-managed-rail h2 {
+    writing-mode: vertical-rl;
+    overflow: visible;
+    color: #606975;
+    font-size: 13px;
+  }
+}
+

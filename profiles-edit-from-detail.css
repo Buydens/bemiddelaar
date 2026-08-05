@@ -1,0 +1,58 @@
+@import url("profiles-linked-filters-left.css");
+
+.edit-detail-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 28px;
+  padding: 0 8px;
+  border: 1px solid #cdd8e2;
+  border-radius: 5px;
+  background: #f7f9fb;
+  color: #315f8b;
+  font-size: 9px;
+  font-weight: 680;
+  cursor: pointer;
+}
+
+.edit-detail-action svg {
+  width: 13px;
+  height: 13px;
+}
+
+.edit-detail-action:hover,
+.edit-detail-action.is-active {
+  border-color: #9fbbd5;
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+}
+
+.workspace.is-editor-open #detailPanel,
+.workspace.is-editor-open #crudPanel {
+  border-color: #a8bfd0;
+}
+
+.workspace.is-editor-open #detailPanel::after,
+.workspace.is-editor-open #crudPanel::after {
+  border-color: rgba(62, 112, 158, .2);
+}
+
+.workspace.is-editor-open #crudPanel::before {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: #5d8fbe;
+  content: "";
+}
+
+.edit-rail-icon {
+  color: #527da5;
+}
+
+@media (max-width: 1180px) {
+  .edit-detail-action span { display: none; }
+  .edit-detail-action { width: 28px; padding: 0; justify-content: center; }
+}
