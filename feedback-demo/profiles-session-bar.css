@@ -1,7 +1,8 @@
 @import url("profiles-prototype-settings.css");
 
 :root {
-  --topbar-height: 58px;
+  /* Gelijk aan de paneelkoppen, zodat de bovenbalk dezelfde rijhoogte houdt. */
+  --topbar-height: 48px;
   --session-bar-height: 224px;
 }
 

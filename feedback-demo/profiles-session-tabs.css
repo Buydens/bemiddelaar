@@ -1,7 +1,8 @@
 @import url("profiles-session-bar.css");
 
 :root {
-  --session-bar-height: 142px;
+  /* Volgt de smallere bovenbalk, zodat de sessielade zelf 84px hoog blijft. */
+  --session-bar-height: 132px;
 }
 
 .session-panel {
@@ -134,7 +135,7 @@
 
 @media (max-width: 560px) {
   :root {
-    --session-bar-height: 128px;
+    --session-bar-height: 118px;
   }
 
   .session-panel {
