@@ -12,10 +12,10 @@ body[data-fullscreen-others="rails"] #workspace.workspace.has-maximized {
 .detail-cluster:has(> #detailPanel:not(.is-collapsed)):has(> #crudPanel:not(.is-collapsed)) {
   gap: 0;
   overflow: hidden;
-  border: 1px solid var(--edit-utility-line) !important;
+  border: 1px solid #7f9ec2 !important;
   border-radius: 10px;
-  background: linear-gradient(90deg, #fff 0 48%, var(--edit-utility-bg) 72% 100%);
-  box-shadow: 0 0 0 2px rgba(53, 105, 153, .1), 0 8px 24px rgba(45, 85, 123, .045);
+  background: linear-gradient(90deg, #fff 0 44%, var(--edit-utility-bg) 66% 100%);
+  box-shadow: 0 0 0 2px rgba(63, 115, 159, .13), 0 8px 24px rgba(45, 85, 123, .05);
 }
 
 .detail-cluster:has(> #detailPanel:not(.is-collapsed)):has(> #crudPanel:not(.is-collapsed))::before {
