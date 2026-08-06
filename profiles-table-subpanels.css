@@ -23,15 +23,17 @@
   font-size: 9px;
 }
 
+/* Kolomlabels zijn een hulplaag, geen kop: geen eigen band en lichter dan
+   de paneeltitel, zodat ze de rijen aankondigen in plaats van te concurreren. */
 .profile-table th {
-  height: 34px;
+  height: 30px;
   padding: 0 10px;
-  border-bottom: 1px solid #d9dde3;
-  background: #f5f6f8;
-  color: #737b85;
+  border-bottom: 1px solid var(--line-soft);
+  background: transparent;
+  color: #8b939d;
   font-size: 8px;
-  font-weight: 720;
-  letter-spacing: .035em;
+  font-weight: 600;
+  letter-spacing: .04em;
   text-align: left;
   text-transform: uppercase;
   white-space: nowrap;

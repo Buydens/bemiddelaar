@@ -100,14 +100,19 @@ svg { display: block; width: 18px; height: 18px; fill: none; stroke: currentColo
 .filter-menu button.is-selected { background: var(--blue-soft); color: var(--blue); font-weight: 650; }
 .sort-field { gap: 3px; padding: 0 5px 0 9px; }
 .sort-field select { max-width: 124px; border: 0; outline: 0; background: transparent; color: #4d555f; font-size: 10px; cursor: pointer; }
-.selection-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 9px; padding: 8px 9px; border-radius: 6px; background: var(--blue-soft); color: #1b55a4; }
+/* Selectie is één regel: de toelichting loopt achter het aantal aan in plaats
+   van er een tweede tekstregel onder te leggen. */
+.selection-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 8px; padding: 6px 9px; border-radius: 6px; background: var(--blue-soft); color: #1b55a4; }
 .selection-row[hidden] { display: none; }
-.selection-row span, .selection-row small { display: block; }
+.selection-row > div { display: flex; align-items: baseline; flex-wrap: wrap; gap: 7px; min-width: 0; }
+.selection-row span, .selection-row small { display: inline; }
 .selection-row span { font-size: 10px; font-weight: 650; }
-.selection-row small { margin-top: 2px; font-size: 9px; opacity: .72; }
-.selection-row button { padding: 5px 7px; border-radius: 5px; background: rgba(255,255,255,.7); color: var(--blue-dark); font-size: 9px; font-weight: 600; cursor: pointer; }
-.results-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 2px 9px; color: var(--muted-2); font-size: 9px; }
-.results-meta span:first-child { color: #555e68; font-weight: 650; }
+.selection-row small { margin-top: 0; font-size: 9px; opacity: .66; }
+.selection-row small[hidden] { display: none; }
+.selection-row button { padding: 5px 7px; border-radius: 5px; background: rgba(255,255,255,.7); color: var(--blue-dark); font-size: 9px; font-weight: 600; white-space: nowrap; cursor: pointer; }
+/* Het aantal staat al als badge in de paneelkop; hier blijft enkel de legende. */
+.results-meta { display: flex; align-items: center; justify-content: flex-end; gap: 12px; padding: 7px 2px 6px; color: var(--muted-2); font-size: 9px; }
+.results-meta #resultsLabel { display: none; }
 
 .profile-list { padding: 0 12px 28px; }
 .profile-row { position: relative; display: grid; grid-template-columns: 22px 34px minmax(130px,1.4fr) minmax(85px,.8fr) auto 20px; align-items: center; gap: 9px; min-height: 64px; padding: 8px 8px; border-bottom: 1px solid var(--line-soft); background: transparent; cursor: pointer; transition: background 130ms ease; }

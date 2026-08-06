@@ -193,7 +193,9 @@ function updateSelectionBar(profiles = visibleProfiles()) {
   selectionLabel.textContent = `${count} ${count === 1 ? "profiel geselecteerd" : "profielen geselecteerd"}`;
   const visibleIds = new Set(profiles.map((profile) => profile.id));
   const hiddenCount = [...selectedIds].filter((id) => !visibleIds.has(id)).length;
-  hiddenSelectionLabel.textContent = hiddenCount ? `${hiddenCount} buiten de huidige resultaten` : "Selectie blijft bewaard tijdens zoeken en filteren";
+  // Alleen tonen wat de bemiddelaar niet ziet; de selectie blijft sowieso bewaard.
+  hiddenSelectionLabel.textContent = hiddenCount ? `${hiddenCount} buiten de huidige resultaten` : "";
+  hiddenSelectionLabel.hidden = hiddenCount === 0;
 }
 
 function setPanelCollapsed(panel, collapsed, disabled = false) {

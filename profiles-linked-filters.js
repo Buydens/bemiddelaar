@@ -1,12 +1,12 @@
 const profileData = [
-  { id: "p1", name: "Amina El Amrani", initials: "AE", city: "Antwerpen", region: "Antwerpen", email: "amina.elamrani@example.be", phone: "+32 470 12 34 56", status: "Actief", stage: "Werkervaring in kaart", stageGroup: "Oriëntatie", adviser: "Liesbeth Janssens", tags: ["Taalondersteuning", "CV nagekeken"], updated: 0, date: "Vandaag, 09:42" },
-  { id: "p2", name: "Bram Vermeulen", initials: "BV", city: "Mechelen", region: "Antwerpen", email: "bram.vermeulen@example.be", phone: "+32 486 23 45 67", status: "Opvolging", stage: "Opleidingsplan", stageGroup: "Opleiding", adviser: "Tom Peeters", tags: ["Opleiding", "Opvolging nodig"], updated: 1, date: "Gisteren, 16:18" },
-  { id: "p3", name: "Chloë De Smet", initials: "CD", city: "Gent", region: "Oost-Vlaanderen", email: "chloe.desmet@example.be", phone: "+32 472 34 56 78", status: "Nieuw", stage: "Intake gepland", stageGroup: "Intake", adviser: "Liesbeth Janssens", tags: ["Nieuwe inschrijving"], updated: 2, date: "2 dagen geleden" },
-  { id: "p4", name: "Daan Maes", initials: "DM", city: "Leuven", region: "Vlaams-Brabant en Brussel", email: "daan.maes@example.be", phone: "+32 478 45 67 89", status: "Actief", stage: "Sollicitatiebegeleiding", stageGroup: "Matching", adviser: "Sarah Wouters", tags: ["Prioritair", "Sollicitatie"], updated: 3, date: "3 dagen geleden" },
-  { id: "p5", name: "Elif Kaya", initials: "EK", city: "Hasselt", region: "Limburg", email: "elif.kaya@example.be", phone: "+32 489 56 78 90", status: "Opvolging", stage: "Werkplekleren", stageGroup: "Opleiding", adviser: "Tom Peeters", tags: ["Opleiding", "Werkplekleren"], updated: 4, date: "4 dagen geleden" },
-  { id: "p6", name: "Farid Benali", initials: "FB", city: "Brussel", region: "Vlaams-Brabant en Brussel", email: "farid.benali@example.be", phone: "+32 471 67 89 01", status: "Actief", stage: "Competenties valideren", stageGroup: "Oriëntatie", adviser: "Sarah Wouters", tags: ["Taalondersteuning", "Competenties"], updated: 6, date: "6 dagen geleden" },
-  { id: "p7", name: "Gitte Claes", initials: "GC", city: "Turnhout", region: "Antwerpen", email: "gitte.claes@example.be", phone: "+32 475 78 90 12", status: "Nieuw", stage: "Eerste contact", stageGroup: "Intake", adviser: "Liesbeth Janssens", tags: ["Nieuwe inschrijving"], updated: 7, date: "Vorige week" },
-  { id: "p8", name: "Hassan Özdemir", initials: "HO", city: "Kortrijk", region: "West-Vlaanderen", email: "hassan.ozdemir@example.be", phone: "+32 488 89 01 23", status: "Actief", stage: "Vacaturematching", stageGroup: "Matching", adviser: "Tom Peeters", tags: ["Prioritair", "Vacaturematch"], updated: 14, date: "2 weken geleden" },
+  { id: "p1", name: "Demo Profiel A", initials: "DA", city: "Antwerpen", region: "Antwerpen", email: "profiel.a@example.com", phone: "+32 000 00 00 01 (demo)", status: "Actief", stage: "Werkervaring in kaart", stageGroup: "Oriëntatie", adviser: "Demo Bemiddelaar Noord", tags: ["Taalondersteuning", "CV nagekeken"], updated: 0, date: "Vandaag, 09:42" },
+  { id: "p2", name: "Demo Profiel B", initials: "DB", city: "Mechelen", region: "Antwerpen", email: "profiel.b@example.com", phone: "+32 000 00 00 02 (demo)", status: "Opvolging", stage: "Opleidingsplan", stageGroup: "Opleiding", adviser: "Demo Bemiddelaar Centrum", tags: ["Opleiding", "Opvolging nodig"], updated: 1, date: "Gisteren, 16:18" },
+  { id: "p3", name: "Demo Profiel C", initials: "DC", city: "Gent", region: "Oost-Vlaanderen", email: "profiel.c@example.com", phone: "+32 000 00 00 03 (demo)", status: "Nieuw", stage: "Intake gepland", stageGroup: "Intake", adviser: "Demo Bemiddelaar Noord", tags: ["Nieuwe inschrijving"], updated: 2, date: "2 dagen geleden" },
+  { id: "p4", name: "Demo Profiel D", initials: "DD", city: "Leuven", region: "Vlaams-Brabant en Brussel", email: "profiel.d@example.com", phone: "+32 000 00 00 04 (demo)", status: "Actief", stage: "Sollicitatiebegeleiding", stageGroup: "Matching", adviser: "Demo Bemiddelaar Zuid", tags: ["Prioritair", "Sollicitatie"], updated: 3, date: "3 dagen geleden" },
+  { id: "p5", name: "Demo Profiel E", initials: "DE", city: "Hasselt", region: "Limburg", email: "profiel.e@example.com", phone: "+32 000 00 00 05 (demo)", status: "Opvolging", stage: "Werkplekleren", stageGroup: "Opleiding", adviser: "Demo Bemiddelaar Centrum", tags: ["Opleiding", "Werkplekleren"], updated: 4, date: "4 dagen geleden" },
+  { id: "p6", name: "Demo Profiel F", initials: "DF", city: "Brussel", region: "Vlaams-Brabant en Brussel", email: "profiel.f@example.com", phone: "+32 000 00 00 06 (demo)", status: "Actief", stage: "Competenties valideren", stageGroup: "Oriëntatie", adviser: "Demo Bemiddelaar Zuid", tags: ["Taalondersteuning", "Competenties"], updated: 6, date: "6 dagen geleden" },
+  { id: "p7", name: "Demo Profiel G", initials: "DG", city: "Turnhout", region: "Antwerpen", email: "profiel.g@example.com", phone: "+32 000 00 00 07 (demo)", status: "Nieuw", stage: "Eerste contact", stageGroup: "Intake", adviser: "Demo Bemiddelaar Noord", tags: ["Nieuwe inschrijving"], updated: 7, date: "Vorige week" },
+  { id: "p8", name: "Demo Profiel H", initials: "DH", city: "Kortrijk", region: "West-Vlaanderen", email: "profiel.h@example.com", phone: "+32 000 00 00 08 (demo)", status: "Actief", stage: "Vacaturematching", stageGroup: "Matching", adviser: "Demo Bemiddelaar Centrum", tags: ["Prioritair", "Vacaturematch"], updated: 14, date: "2 weken geleden" },
 ];
 
 const filterLabels = {
@@ -193,7 +193,9 @@ function updateSelectionBar(profiles = visibleProfiles()) {
   selectionLabel.textContent = `${count} ${count === 1 ? "profiel geselecteerd" : "profielen geselecteerd"}`;
   const visibleIds = new Set(profiles.map((profile) => profile.id));
   const hiddenCount = [...selectedIds].filter((id) => !visibleIds.has(id)).length;
-  hiddenSelectionLabel.textContent = hiddenCount ? `${hiddenCount} buiten de huidige resultaten` : "Selectie blijft bewaard tijdens zoeken en filteren";
+  // Alleen tonen wat de bemiddelaar niet ziet; de selectie blijft sowieso bewaard.
+  hiddenSelectionLabel.textContent = hiddenCount ? `${hiddenCount} buiten de huidige resultaten` : "";
+  hiddenSelectionLabel.hidden = hiddenCount === 0;
 }
 
 function setPanelCollapsed(panel, collapsed, disabled = false) {
