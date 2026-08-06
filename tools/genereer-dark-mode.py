@@ -84,26 +84,30 @@ NEUTRAAL = 15  # onder deze verzadiging noemen we een kleur grijs
 
 def vlak(h, s, l, a):
     """Achtergronden. Grijzen worden donker met behoud van hun onderlinge
-    volgorde; getinte vlakken houden hun kleur maar worden diepe tinten."""
+    volgorde; getinte vlakken houden hun kleur maar worden diepe tinten.
+
+    De trappen liggen bewust ver uit elkaar: op donker vallen vlakken veel
+    sneller samen dan op licht, dus een verschil dat in het licht volstaat
+    is hier onzichtbaar."""
     if s < NEUTRAAL:
         if l >= 97:
-            nl, ns = 16, min(s, 6)      # #fff en bijna-wit: het paneelvlak
+            nl, ns = 17, min(s, 6)      # #fff en bijna-wit: het bovenste vlak
         elif l >= 90:
-            nl, ns = 13, min(s, 6)      # canvas en lichte grijzen: liggen dieper
+            nl, ns = 12, min(s, 6)      # canvas en lichte grijzen: liggen dieper
         elif l >= 70:
-            nl, ns = 22, min(s, 8)
+            nl, ns = 24, min(s, 8)
         elif l >= 45:
-            nl, ns = 28, min(s, 10)
+            nl, ns = 30, min(s, 10)
         else:
-            nl, ns = max(l, 30), min(s, 10)
+            nl, ns = max(l, 34), min(s, 10)
     elif l >= 85:
-        nl, ns = 19, min(s, 42)         # zachte accenttinten
+        nl, ns = 26, min(s, 45)         # zachte accenttinten, zoals selectie
     elif l >= 65:
-        nl, ns = 24, min(s, 42)
+        nl, ns = 30, min(s, 45)
     elif l >= 45:
-        nl, ns = 30, min(s, 48)
+        nl, ns = 36, min(s, 50)
     else:
-        nl, ns = max(l, 42), s          # verzadigde vullingen blijven vol
+        nl, ns = max(l, 46), s          # verzadigde vullingen blijven vol
     return naar_css(h, ns, nl, a)
 
 
@@ -111,14 +115,14 @@ def tekst(h, s, l, a):
     """Tekst en iconen. Alles moet licht worden, accenten blijven leesbaar."""
     if s < NEUTRAAL:
         if l <= 35:
-            nl, ns = 91, min(s, 6)      # hoofdtekst
+            nl, ns = 93, min(s, 6)      # hoofdtekst
         elif l <= 55:
-            nl, ns = 73, min(s, 8)      # secundair
+            nl, ns = 82, min(s, 8)      # secundair
         else:
-            nl, ns = 59, min(s, 10)     # gedempt
+            nl, ns = 72, min(s, 10)     # gedempt, maar nog boven 4.5:1
     else:
-        nl = 74 if l < 62 else max(l, 74)
-        ns = min(s, 58)
+        nl = 78 if l < 62 else max(l, 78)
+        ns = min(s, 60)
     return naar_css(h, ns, nl, a)
 
 
@@ -126,13 +130,13 @@ def lijn(h, s, l, a):
     """Lijnen liggen op donker juist lichter dan hun vlak."""
     if s < NEUTRAAL:
         if l >= 90:
-            nl, ns = 25, min(s, 8)
+            nl, ns = 30, min(s, 8)
         elif l >= 70:
-            nl, ns = 31, min(s, 10)
+            nl, ns = 36, min(s, 10)
         else:
-            nl, ns = 38, min(s, 12)
+            nl, ns = 42, min(s, 12)
     else:
-        nl, ns = 44, min(s, 40)
+        nl, ns = 48, min(s, 40)
     return naar_css(h, ns, nl, a)
 
 
@@ -291,43 +295,120 @@ KOP = '''@import url("profiles-detail-expandable-menu.css");
 :root[data-theme="dark"] {
   color-scheme: dark;
 
-  --ink: #e7e9ec;
-  --muted: #9aa3ae;
-  --muted-2: #79828d;
-  --line: #333a43;
-  --line-soft: #272d35;
-  --canvas: #14171b;
-  --panel: #1b1f25;
-  --surface: #1f242b;
+  --ink: #eceef1;
+  --muted: #b0b8c2;
+  --muted-2: #9aa4b0;
+  --line: #3d4650;
+  --line-soft: #2e353f;
+  --canvas: #0f1216;
+  --panel: #1a1f26;
+  --surface: #232931;
   --blue: #5c9dff;
-  --blue-dark: #8bbaff;
-  --blue-soft: #16233a;
-  --green: #4fbb85;
-  --amber: #d59a4a;
+  --blue-dark: #93bdff;
+  --blue-soft: #1b2d4a;
+  --green: #56c48e;
+  --amber: #dda45c;
 
-  --utility-bg: #14231b;
-  --utility-header: #17291f;
-  --utility-line: #2c4636;
-  --utility-ink: #9fd3b4;
-  --filter-green: #5fb98a;
-  --filter-green-dark: #8ed4ae;
-  --filter-green-soft: #16261d;
+  --utility-bg: #152a1f;
+  --utility-header: #1a3326;
+  --utility-line: #2f5540;
+  --utility-ink: #a8dcbe;
+  --filter-green: #63c294;
+  --filter-green-dark: #93dcb5;
+  --filter-green-soft: #16281d;
 
-  --edit-blue-soft: #16202e;
-  --edit-blue-header: #1a2637;
-  --edit-blue-line: #33455c;
-  --edit-utility-bg: #16202e;
-  --edit-utility-header: #1a2637;
-  --edit-utility-line: #33455c;
-  --edit-utility-ink: #9bc0e8;
+  --edit-blue-soft: #16243a;
+  --edit-blue-header: #1b2c46;
+  --edit-blue-line: #38506e;
+  --edit-utility-bg: #16243a;
+  --edit-utility-header: #1b2c46;
+  --edit-utility-line: #38506e;
+  --edit-utility-ink: #a6c8ee;
 
-  --nav-utility-bg: #1d1830;
-  --nav-utility-header: #241d3a;
-  --nav-utility-line: #3d3357;
-  --nav-utility-ink: #c0b0e0;
+  --nav-utility-bg: #201a35;
+  --nav-utility-header: #271f40;
+  --nav-utility-line: #453a63;
+  --nav-utility-ink: #c8b8e8;
 }
 
 /* Vanaf hier: afgeleid uit het licht. */
+'''
+
+# Wat de generator niet kan weten: dat een kleur wit is omdat ze op een
+# accentvlak ligt. De rol volgt daar niet uit de eigenschap maar uit het paar
+# vlak-en-tekst samen. Die gevallen staan hier met de hand, en komen door hun
+# plek achteraan boven de afgeleide regels.
+STAART = '''
+/* --- handmatige correcties --- */
+
+/*
+ * Accentvlakken dragen op licht witte tekst. Op donker wordt zo'n vlak zelf
+ * licht, en dan moet de tekst juist donker worden. Dat volgt niet uit de
+ * losse declaratie, dus staat het hier.
+ */
+:root[data-theme="dark"] .button-primary,
+:root[data-theme="dark"] #filterButton i,
+:root[data-theme="dark"] .rail-selection-count {
+  color: #0d1520;
+}
+
+:root[data-theme="dark"] .button-primary {
+  background: var(--blue);
+  border-color: transparent;
+}
+
+:root[data-theme="dark"] .rail-selection-count {
+  background: var(--blue);
+}
+
+:root[data-theme="dark"] #filterButton i {
+  background: var(--filter-green);
+}
+
+/* De gestippelde selectiemarkering op de rij moet tegen de getinte rij op. */
+:root[data-theme="dark"] .profile-table .profile-row.is-selected td:first-child {
+  box-shadow: inset 2px 0 0 var(--blue);
+}
+
+/*
+ * Chips dragen accentkleurige tekst op een licht getint vlak. Dat vlak moet op
+ * donker juist dieper dan gemiddeld worden, anders komen tekst en vlak in
+ * dezelfde kleurzone terecht en wordt het label modderig. De generator kan dit
+ * niet zien: ze kent per declaratie alleen het vlak of alleen de tekst.
+ */
+:root[data-theme="dark"] .status-pill {
+  background: #14261b;
+}
+
+:root[data-theme="dark"] .status-pill[data-status="Opvolging"] {
+  background: #2a2011;
+}
+
+:root[data-theme="dark"] .status-pill[data-status="Nieuw"] {
+  background: #16253c;
+}
+
+:root[data-theme="dark"] .utility-tags input:checked + span,
+:root[data-theme="dark"] .utility-options-inline input:checked + span {
+  background: #17301f;
+}
+
+:root[data-theme="dark"] .filter-summary,
+:root[data-theme="dark"] #filterButton {
+  background: #14261b;
+}
+
+:root[data-theme="dark"] #filterButton:hover,
+:root[data-theme="dark"] #filterButton[aria-expanded="true"] {
+  background: #1b3325;
+}
+
+/* Invoervelden mogen niet samenvallen met het paneel waarin ze staan. */
+:root[data-theme="dark"] .form-control,
+:root[data-theme="dark"] .search-field,
+:root[data-theme="dark"] .sort-field select {
+  background: #12161b;
+}
 '''
 
 
@@ -362,6 +443,7 @@ def main() -> int:
             uit.append(f"/* --- {bestand} --- */\n")
             uit.extend(stukken)
 
+    uit.append(STAART)
     inhoud = "\n".join(uit).replace("\n\n\n", "\n\n") + "\n"
     for map_ in (BRON_MAP, WORTEL):
         with open(os.path.join(map_, UITVOER), "w", encoding="utf-8") as f:
