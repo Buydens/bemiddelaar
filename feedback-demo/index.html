@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="light dark" />
     <meta name="description" content="Publieke feedbackdemo met uitsluitend synthetische profielen en contactgegevens." />
     <title>Werkruimte — feedbackdemo</title>
-    <link rel="stylesheet" href="profiles-detail-expandable-menu.css" />
+    <link rel="stylesheet" href="profiles-dark-mode.css" />
+    <script src="profiles-dark-mode.js"></script>
   </head>
   <body data-initial-profile="p1" data-fullscreen-scope="cluster" data-rail-width="34" data-overview-presentation="table" data-edit-presentation="subpanel" data-edit-toggle="true" data-main-rails="both" data-editor-mode="on-demand" data-selection-behavior="row-opens-detail" data-resize-feel="classic" data-selection-hitarea="cell" data-edge-rails="true" data-rail-transition="classic" data-continuous-resize="true" data-panel-management="owner-groups" data-rail-action="managed" data-fullscreen-others="rails" data-following-panel-space="split" data-prototype-settings="true" data-session-bar="tabs" data-detail-navigation="menu" data-detail-menu-mode="icons" data-dropdown-width="panel">
     <div class="app-shell">
@@ -19,7 +20,7 @@
           </button>
           <aside class="prototype-settings-panel" id="prototypeSettingsPanel" aria-label="Prototype-instellingen" hidden>
             <div class="prototype-settings-heading"><strong>Prototype-instellingen</strong><span>Vergelijk werkruimtegedrag zonder van versie te wisselen.</span></div>
-            <form id="prototypeSettingsForm">
+            <form id="prototypeSettingsForm"><div class="prototype-settings-group"><span>Weergave</span><label class="prototype-setting"><span class="prototype-setting-copy"><strong>Donkere modus</strong><small>Zonder eigen keuze volgt de werkruimte je systeeminstelling.</small></span><span class="setting-switch"><input id="darkModeSetting" type="checkbox" /><i class="switch-track"></i></span></label></div>
               <div class="prototype-settings-group"><span>Rails en schalen</span>
                 <label class="prototype-setting"><span class="prototype-setting-copy"><strong>Rails aan de buitenrand</strong><small>Gekoppelde subpanelen delen één buitenrail.</small></span><span class="setting-switch"><input id="edgeRailsSetting" type="checkbox" checked /><i class="switch-track"></i></span></label>
                 <label class="prototype-setting"><span class="prototype-setting-copy"><strong>Vloeiende overgang</strong><small>Animeert tussen paneel en rail.</small></span><span class="setting-switch"><input id="smoothRailSetting" type="checkbox" checked /><i class="switch-track"></i></span></label>
