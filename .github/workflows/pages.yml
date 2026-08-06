@@ -15,7 +15,9 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  # Een lopende publicatie niet afbreken: de deploystap botst dan op een
+  # deployment die nog bezig is en faalt. Wachtende runs mogen wel vervallen.
+  cancel-in-progress: false
 
 jobs:
   deploy:
