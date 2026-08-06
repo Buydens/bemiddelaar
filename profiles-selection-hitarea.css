@@ -5,8 +5,12 @@ body[data-selection-hitarea="cell"] .profile-table .table-select {
   width: 48px;
 }
 
+/* Sticky in plaats van relative: de cel blijft het positioneringsanker voor de
+   hitarea en blijft tegelijk staan bij horizontaal schuiven. */
 body[data-selection-hitarea="cell"] .profile-table td.table-select {
-  position: relative;
+  position: sticky;
+  left: 0;
+  z-index: 2;
   padding: 0;
   overflow: visible;
 }

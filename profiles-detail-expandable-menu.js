@@ -1,3 +1,12 @@
+// De tabel wordt bij elke filterwijziging opnieuw opgebouwd; daarom luisteren we
+// in de capturefase op document in plaats van op de scrollcontainer zelf.
+document.addEventListener("scroll", (event) => {
+  const container = event.target;
+  if (!(container instanceof HTMLElement)) return;
+  if (!container.classList.contains("profile-table-scroll")) return;
+  container.classList.toggle("is-scrolled-x", container.scrollLeft > 0);
+}, true);
+
 (() => {
   const body = document.body;
   const menu = document.querySelector("#detailMenuPanel");

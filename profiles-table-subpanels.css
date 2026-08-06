@@ -52,6 +52,30 @@
   padding-left: 12px;
 }
 
+/* De selectiekolom blijft staan wanneer de tabel horizontaal schuift, zodat
+   aanvinken mogelijk blijft terwijl je naar rechts kijkt. */
+.profile-table th.table-select,
+.profile-table td.table-select {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+}
+
+.profile-table th.table-select {
+  z-index: 3;
+  background: var(--surface);
+}
+
+/* De scheiding verschijnt pas als er echt iets onder de kolom door schuift. */
+.profile-table-scroll.is-scrolled-x td.table-select,
+.profile-table-scroll.is-scrolled-x th.table-select {
+  box-shadow: inset -1px 0 0 var(--line-soft), 6px 0 10px -8px rgba(23, 25, 28, .28);
+}
+
+.profile-table-scroll.is-scrolled-x .profile-row.is-selected td.table-select {
+  box-shadow: inset 2px 0 0 var(--blue), inset -1px 0 0 var(--line-soft), 6px 0 10px -8px rgba(23, 25, 28, .28);
+}
+
 .profile-table .table-open {
   width: 34px;
   padding-inline: 5px;
