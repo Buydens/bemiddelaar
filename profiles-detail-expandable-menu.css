@@ -113,6 +113,65 @@ body[data-detail-menu-mode="labels"] .detail-icon-menu-separator {
   margin-inline: 10px;
 }
 
+/* De selectie ontstaat in Overzicht, maar je handelt ze af in Detail. Staat
+   Detail dicht, dan draagt de rail het aantal en de wisknop. */
+#detailPanel:not(.is-collapsed) .rail-selection {
+  display: none;
+}
+
+.rail-selection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin-top: 3px;
+}
+
+.rail-selection[hidden] {
+  display: none;
+}
+
+.rail-selection-count {
+  display: grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 10px;
+  background: var(--blue);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.rail-selection-clear {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 140ms ease, background-color 140ms ease, color 140ms ease;
+}
+
+.rail-selection-clear:hover,
+.rail-selection-clear:focus-visible {
+  border-color: #8fb1d2;
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+}
+
+.rail-selection-clear svg {
+  width: 11px;
+  height: 11px;
+  stroke-width: 1.9;
+}
+
 /* In railstatus verdwijnt het volledige interne menu, ongeacht de gekozen stand. */
 #detailPanel.is-collapsed > .detail-composite-body,
 .detail-cluster.is-managed-rail > #detailPanel > .detail-composite-body {

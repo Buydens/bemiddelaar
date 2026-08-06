@@ -44,6 +44,9 @@ const linkedStateLabel = document.querySelector("#linkedStateLabel");
 const selectionRow = document.querySelector("#selectionRow");
 const selectionLabel = document.querySelector("#selectionLabel");
 const hiddenSelectionLabel = document.querySelector("#hiddenSelectionLabel");
+const railSelection = document.querySelector("#railSelection");
+const railSelectionCount = document.querySelector("#railSelectionCount");
+const railSelectionClear = document.querySelector("#railSelectionClear");
 const resultsLabel = document.querySelector("#resultsLabel");
 const headerResultCount = document.querySelector("#headerResultCount");
 const modeLabel = document.querySelector("#modeLabel");
@@ -189,6 +192,7 @@ function renderProfileList() {
 function updateSelectionBar(profiles = visibleProfiles()) {
   const count = selectedIds.size;
   selectionRow.hidden = count === 0;
+  updateRailSelection(count);
   if (!count) return;
   selectionLabel.textContent = `${count} ${count === 1 ? "profiel geselecteerd" : "profielen geselecteerd"}`;
   const visibleIds = new Set(profiles.map((profile) => profile.id));
@@ -469,11 +473,33 @@ if (editDetailButton) {
   });
 }
 
-document.querySelector("#clearSelectionButton").addEventListener("click", () => {
+// De selectie leeft in Overzicht, maar je werkt ermee in Detail. Staat Detail
+// dicht, dan draagt de rail de teller en de wisknop.
+function updateRailSelection(count) {
+  if (!railSelection) return;
+  railSelection.hidden = count === 0;
+  railSelectionCount.textContent = String(count);
+  railSelectionCount.setAttribute(
+    "aria-label",
+    `${count} ${count === 1 ? "profiel" : "profielen"} geselecteerd`,
+  );
+}
+
+function clearSelection() {
   selectedIds.clear();
   renderProfileList();
   renderDependentContent();
-});
+}
+
+document.querySelector("#clearSelectionButton").addEventListener("click", clearSelection);
+
+if (railSelectionClear) {
+  railSelectionClear.addEventListener("click", (event) => {
+    // De railkop opent het paneel bij klik; wissen mag dat niet uitlokken.
+    event.stopPropagation();
+    clearSelection();
+  });
+}
 
 document.querySelector("#resetSearchButton").addEventListener("click", () => {
   clearFilters(true);
